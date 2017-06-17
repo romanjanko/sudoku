@@ -45,27 +45,23 @@ export default class Board {
    }
 
    printToConsole() {
-      for (let row = 1; row <= this.boardSize; row++)
-      {
+      for (let row = 1; row <= this.boardSize; row++) {
          if (row % 3 === 1)
             console.log("-------------------------");
 
          let output = "";
 
-         for (let column = 1; column <= this.boardSize; column++)
-         {
+         for (let column = 1; column <= this.boardSize; column++) {
             if (column % 3 === 1)
                output += "| ";
 
             let value = this.getCell(row, column);
-
             output += `${value ? value : "x"} `;
-
          }
 
          console.log(output + "|");
       }
-
+      
       console.log("-------------------------");
    }
 }
