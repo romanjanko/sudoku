@@ -1,8 +1,5 @@
 import { boardToString, 
-         areBoardsEqual, 
-         getAllUnusedNumbersInRow, 
-         getAllUnusedNumbersInColumn, 
-         getAllUnusedNumbersInGroup } from './boardExtensions';
+         areBoardsEqual } from './boardExtensions';
 
 export default class Board {
    constructor() {
@@ -20,7 +17,7 @@ export default class Board {
          throw new Error(`Column cannot be ${column} for the board of size ${this.boardSize}.`);
    }
 
-   checkNewValue(value) {
+   checkValueToBeSet(value) {
       if (value < 1 || value > 9)
          throw new Error(`Cell cannot be ${value}.`);
    }
@@ -32,28 +29,12 @@ export default class Board {
 
    setCell(row, column, value) {
       this.checkBoundaries(row, column);
-      this.checkNewValue(value);
+      this.checkValueToBeSet(value);
       this.array[row * this.boardSize + column] = value;
    }
 
    deleteCell(row, column) {
-      this.setCell(row, column, undefined);
-   }
-
-   getAllPossibleNumbersForEmptyCell(row, column) {
-      if (this.getCell(row, column))
-         throw new Error(`Cell in row ${row} and column ${column} should be empty.`);
-      
-      const numbersForRow = getAllUnusedNumbersInRow(this, row);
-      const numbersForColumn = getAllUnusedNumbersInColumn(this, column);
-      const numbersForGroup = getAllUnusedNumbersInGroup(this, row, column);
-
-      // console.log(numbersForRow, numbersForColumn, numbersForGroup);
-
-      const intersectionOfNumbersForRowAndColumn = 
-         new Set([...numbersForRow].filter(x => numbersForColumn.has(x)));
-      
-      return [...intersectionOfNumbersForRowAndColumn].filter(x => numbersForGroup.has(x));
+      this.setCell(row, column, null);
    }
 
    isEqual = (anotherBoard) => areBoardsEqual(this, anotherBoard);
