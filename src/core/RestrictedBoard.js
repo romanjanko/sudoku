@@ -1,11 +1,11 @@
 
-import Board from './board';
+import Board from './Board';
 
 export default class RestrictedBoard extends Board {
    setCell(row, column, value) {
       const validNumbers = this.getAllValidNumbersForCell(row, column);
-      
-      if (validNumbers.has(value))
+
+      if (validNumbers.has(value) || !value)
          super.setCell(row, column, value);
       else
          throw new Error(`It is not possible to set ${value} in position (${row}, ${column}).`)
@@ -16,7 +16,9 @@ export default class RestrictedBoard extends Board {
       const numbersForColumn = this.getAllValidNumbersInColumnForCell(row, column);
       const numbersForGroup = this.getAllValidNumbersInGroupForCell(row, column);
 
-      // console.log(numbersForRow, numbersForColumn, numbersForGroup);
+      // console.log("numbersForRow", numbersForRow);
+      // console.log("numbersForColumn", numbersForColumn);
+      // console.log("numbersForGroup", numbersForGroup);
 
       const intersectionOfNumbersForRowAndColumn = 
          new Set([...numbersForRow].filter(x => numbersForColumn.has(x)));
@@ -62,8 +64,8 @@ export default class RestrictedBoard extends Board {
       const rowForGroupStart = Math.floor((cellRow - 1) / groupSize) * groupSize + 1;
       const columnForGroupStart = Math.floor((cellColumn - 1) / groupSize) * groupSize + 1;
 
-      for (let row = rowForGroupStart; row <= rowForGroupStart + groupSize; row++) {
-         for (let column = columnForGroupStart; column <= columnForGroupStart + groupSize; column++) {
+      for (let row = rowForGroupStart; row < rowForGroupStart + groupSize; row++) {
+         for (let column = columnForGroupStart; column < columnForGroupStart + groupSize; column++) {
             if (row === cellRow && column === cellColumn)
                continue;
 

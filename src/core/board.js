@@ -18,6 +18,9 @@ export default class Board {
    }
 
    checkValueToBeSet(value) {
+      if (!value)
+         return;
+         
       if (value < 1 || value > 9)
          throw new Error(`Cell cannot be ${value}.`);
    }
