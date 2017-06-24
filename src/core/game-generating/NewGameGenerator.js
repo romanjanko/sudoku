@@ -1,23 +1,13 @@
 import arrayShuffle from 'array-shuffle';
 
-import Board from './Board';
-import RestrictedBoard from './RestrictedBoard';
+import RestrictedBoard from '../boards/RestrictedBoard';
+import { getIndex, getRowFromIndex, getColumnFromIndex } from '../boards/boardUtils';
 
 export default class NewGameGenerator {
-   generateGame(gameDifficulty) {
-      const newGameSolution = new RestrictedBoard();
-      this.stateSpaceSearch(newGameSolution, 1, 1);
-
-      const playerBoard = this.createPlayerBoard(newGameSolution);
-
-      return {
-         newGame: playerBoard,
-         newGameSolution
-      };
-   }
-
-   createPlayerBoard(boardWithSolution) {
-      
+   generateGame() {
+      const newGame = new RestrictedBoard();
+      this.stateSpaceSearch(newGame, 1, 1);
+      return newGame;
    }
 
    getShuffledNumbersAsInputForBoardCells() {
@@ -25,11 +15,11 @@ export default class NewGameGenerator {
    }
 
    calculateNextCellPosition(boardSize, row, column) {
-      let index = (row - 1) * boardSize + (column - 1);
+      let index = getIndex(boardSize, row, column);
 
       return {
-         row: Math.floor((index + 1) / boardSize) + 1,
-         column: (index + 1) % boardSize + 1
+         row: getRowFromIndex(boardSize, index + 1),
+         column: getColumnFromIndex(boardSize, index + 1)
       };
    }
 

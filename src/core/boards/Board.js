@@ -1,5 +1,5 @@
 import { boardToString, 
-         areBoardsEqual } from './boardExtensions';
+         areBoardsEqual } from './boardUtils';
 
 export default class Board {
    constructor() {

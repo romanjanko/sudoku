@@ -5,8 +5,9 @@ import { createStore, applyMiddleware } from 'redux';
 
 import App from './components/app';
 import reducers from './reducers';
-import RestrictedBoard from './core/RestrictedBoard';
-import NewGameGenerator from './core/NewGameGenerator';
+import RestrictedBoard from './core/boards/RestrictedBoard';
+import NewGameGenerator from './core/game-generating/NewGameGenerator';
+import PlayerBoardCreator from './core/game-generating/PlayerBoardCreator';
 
 const createStoreWithMiddleware = applyMiddleware()(createStore);
 
@@ -18,7 +19,12 @@ console.log(board.getAllValidNumbersForCell(1, 3));
 board.printToConsole();
 
 const gameGenerator = new NewGameGenerator();
-gameGenerator.generateGame().newGameSolution.printToConsole();
+const newGame = gameGenerator.generateGame();
+newGame.printToConsole();
+
+const playerBoardCreator = new PlayerBoardCreator();
+const playerBoard = playerBoardCreator.createFromGeneratedGame(newGame);
+playerBoard.printToConsole();
 
 ReactDOM.render(
   <Provider store={createStoreWithMiddleware(reducers)}>

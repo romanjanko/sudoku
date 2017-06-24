@@ -33,3 +33,9 @@ export const boardToString = (board) => {
 
    return output + "-------------------------\n";
 };
+
+export const getRowFromIndex = (boardSize, index) => Math.floor(index / boardSize) + 1;
+
+export const getColumnFromIndex = (boardSize, index) => index % boardSize + 1;
+
+export const getIndex = (boardSize, row, column) => (row - 1) * boardSize + (column - 1);
