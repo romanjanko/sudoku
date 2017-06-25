@@ -14,7 +14,7 @@ export default class PlayerBoardCreator {
          newPlayerBoard.setCell(row, column, number);
       });
 
-      return newPlayerBoard;
+      return { board: newPlayerBoard, mask: cellsToShow };
    }
 
    determineCellsToShow(boardSize) {
