@@ -13,33 +13,28 @@ export default class GameEngine {
    newGame(gameDifficulty) {
       this.solutionBoard = this.newGameGenerator.generateGame();
       this.playerBoard = this.playerBoardCreator.createFromGeneratedGame(this.solutionBoard, gameDifficulty);
+
+      console.log("Solution:");
+      this.solutionBoard.printToConsole();
+      console.log("Player board (init):");
+      this.playerBoard.printToConsole();
    }
 
    hint(row, column) {
       return this.solutionBoard.getCell(row, column);
    }
 
-   getPlayerBoardCells() {
+   getPlayerBoard() {
       return this.playerBoard;
    }
 
    setPlayerBoardCell(row, column, number) {
-      if (!this.canBePlayerBoardCellModified(row, column))
-         throw new Error(`This cell (${row}, ${column}) of player board cannot be modified.`);
-      this.playerBoard.board.setCell(row, column, number);
+      this.playerBoard.setCell(row, column, number);
    }
 
    deletePlayerBoardCell(row, column) {
-      if (!this.canBePlayerBoardCellModified(row, column))
-         throw new Error(`This cell (${row}, ${column}) of player board cannot be modified.`);
-      this.playerBoard.board.deleteCell(row, column);
+      this.playerBoard.deleteCell(row, column);
    }
 
-   canBePlayerBoardCellModified(row, column) {
-      const { mask } = this.playerBoard;
-      return mask.findIndex(cellPosition => 
-         cellPosition.row === row && cellPosition.column === column) === -1;
-   }
-
-   isGameSuccessfullySolved = () => areBoardsEqual(this.solutionBoard, this.playerBoard.board);
+   isGameSuccessfullySolved = () => areBoardsEqual(this.solutionBoard, this.playerBoard);
 }

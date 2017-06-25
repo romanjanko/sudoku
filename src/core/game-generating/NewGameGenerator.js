@@ -1,11 +1,11 @@
 import arrayShuffle from 'array-shuffle';
 
-import RestrictedBoard from '../boards/RestrictedBoard';
+import FullSudokuBoard from '../boards/FullSudokuBoard';
 import { getIndex, getRowFromIndex, getColumnFromIndex } from '../boards/boardUtils';
 
 export default class NewGameGenerator {
    generateGame() {
-      const newGame = new RestrictedBoard();
+      const newGame = new FullSudokuBoard();
       this.stateSpaceSearch(newGame, 1, 1);
       return newGame;
    }

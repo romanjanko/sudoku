@@ -1,7 +1,7 @@
 
 import Board from './Board';
 
-export default class RestrictedBoard extends Board {
+export default class FullSudokuBoard extends Board {
    setCell(row, column, value) {
       const validNumbers = this.getAllValidNumbersForCell(row, column);
 

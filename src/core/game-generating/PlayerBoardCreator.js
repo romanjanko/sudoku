@@ -1,20 +1,21 @@
 import arrayShuffle from 'array-shuffle';
 
 import Board from '../boards/Board';
+import PlayerBoard from '../boards/PlayerBoard';
 import { getRowFromIndex, getColumnFromIndex } from '../boards/boardUtils';
 
 export default class PlayerBoardCreator {
    createFromGeneratedGame(newGame, difficulty) {
-      const newPlayerBoard = new Board();
-      const cellsToShow = this.determineCellsToShow(newPlayerBoard.getBoardSize());
+      const cellsToShow = this.determineCellsToShow(newGame.getBoardSize());
+      const tempBoard = new Board();
 
       cellsToShow.forEach(cellPosition => {
          const { row, column } = cellPosition;
          const number = newGame.getCell(row, column);
-         newPlayerBoard.setCell(row, column, number);
+         tempBoard.setCell(row, column, number);
       });
 
-      return { board: newPlayerBoard, mask: cellsToShow };
+      return new PlayerBoard(tempBoard, cellsToShow);
    }
 
    determineCellsToShow(boardSize) {
