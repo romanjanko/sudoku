@@ -8,7 +8,23 @@ export default class PlayerBoard extends Board {
       this.mask = mask;
    }
 
-   getMask = () => this.mask;
+   getCells() {
+      const boardSize = this.getBoardSize();
+      let cells = [];
+
+      for (let row = 1; row <= boardSize; row++) {
+         for (let column = 1; column <= boardSize; column++) {
+            cells.push({
+               row,
+               column,
+               value: this.getCell(row, column),
+               readOnly: !this.canBeCellModified(row, column)
+            })
+         }
+      }
+
+      return cells;
+   }
 
    setCell(row, column, value) {
       if (!this.canBeCellModified(row, column))

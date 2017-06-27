@@ -24,8 +24,8 @@ export default class GameEngine {
       return this.solutionBoard.getCell(row, column);
    }
 
-   getPlayerBoard() {
-      return this.playerBoard;
+   getPlayerBoardCells() {
+      return this.playerBoard.getCells();
    }
 
    setPlayerBoardCell(row, column, number) {

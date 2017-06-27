@@ -3,19 +3,20 @@ import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 
-import App from './components/app';
+import App from './components/App';
 import reducers from './reducers';
 import GameEngine from './core/GameEngine';
 
+const gameEngine = new GameEngine();
+
+const initialState = {
+   boardCells: gameEngine.getPlayerBoardCells()
+}
+
 const createStoreWithMiddleware = applyMiddleware()(createStore);
 
-const gameEngine = new GameEngine();
-// gameEngine.newGame();
-gameEngine.setPlayerBoardCell(1, 1, gameEngine.hint(1, 1));
-gameEngine.getPlayerBoard().printToConsole();
-
 ReactDOM.render(
-  <Provider store={createStoreWithMiddleware(reducers)}>
-    <App />
-  </Provider>
-  , document.querySelector('.container'));
+   <Provider store={createStoreWithMiddleware(reducers, initialState)}>
+      <App />
+   </Provider>
+   , document.querySelector('.container'));
