@@ -20,7 +20,7 @@ export default class PlayerBoardCreator {
 
    determineCellsToShow(boardSize) {
       const allPositions = this.getAllCellsPositions(boardSize);
-      return arrayShuffle(allPositions).slice(45);
+      return arrayShuffle(allPositions).slice(2);
    }
 
    getAllCellsPositions(boardSize) {

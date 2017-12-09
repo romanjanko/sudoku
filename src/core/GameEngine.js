@@ -16,8 +16,8 @@ export default class GameEngine {
 
       console.log("Solution:");
       this.solutionBoard.printToConsole();
-      console.log("Player board (init):");
-      this.playerBoard.printToConsole();
+      // console.log("Player board (init):");
+      // this.playerBoard.printToConsole();
    }
 
    hint(row, column) {

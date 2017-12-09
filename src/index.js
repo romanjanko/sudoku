@@ -6,6 +6,7 @@ import { createStore, applyMiddleware } from 'redux';
 import App from './components/App';
 import reducers from './reducers';
 import GameEngine from './core/GameEngine';
+import GameEngineMiddleware from './middleware/GameEngineMiddleware';
 
 const gameEngine = new GameEngine();
 
@@ -13,7 +14,7 @@ const initialState = {
    boardCells: gameEngine.getPlayerBoardCells()
 }
 
-const createStoreWithMiddleware = applyMiddleware()(createStore);
+const createStoreWithMiddleware = applyMiddleware(GameEngineMiddleware(gameEngine))(createStore);
 
 ReactDOM.render(
    <Provider store={createStoreWithMiddleware(reducers, initialState)}>
