@@ -1,4 +1,4 @@
-.header {
+.main-heading {
    font-size: 8rem;
    text-transform: uppercase;
    text-align: center;
@@ -7,8 +7,8 @@
       display: inline-block;
       width: 10rem;
       height: 10rem;
-      line-height: 11rem; 
-      color: $header-color-white;
+      line-height: 11rem;
+      color: $main-heading-color-white;
       text-align: center;
 
       &:not(:last-child) {
@@ -20,27 +20,27 @@
       }
 
       &--red {
-         background-color: $header-color-red;
+         background-color: $main-heading-color-red;
       }
       
       &--orange {
-         background-color: $header-color-orange;
+         background-color: $main-heading-color-orange;
       }
       
       &--purple {
-         background-color: $header-color-purple;
+         background-color: $main-heading-color-purple;
       }
       
       &--green {
-         background-color: $header-color-green;
+         background-color: $main-heading-color-green;
       }
 
       &--blue {
-         background-color: $header-color-blue;
+         background-color: $main-heading-color-blue;
       }
       
       &--yellow {
-         background-color: $header-color-yellow;
+         background-color: $main-heading-color-yellow;
       }
    }
 }

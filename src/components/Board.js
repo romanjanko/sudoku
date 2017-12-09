@@ -57,11 +57,13 @@ class Board extends Component {
       const cellsByRows = groupBy(cells, cell => cell.row);
 
       return (
-         <table>
-            <tbody>
-               { Object.keys(cellsByRows).map(row => this.renderRow(cellsByRows[row])) }
-            </tbody>
-         </table>
+         <div className="board">
+            <table>
+               <tbody>
+                  { Object.keys(cellsByRows).map(row => this.renderRow(cellsByRows[row])) }
+               </tbody>
+            </table>
+         </div>
       );
    }
 }

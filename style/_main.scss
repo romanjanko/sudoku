@@ -5,12 +5,18 @@
 }
 
 html {
-   font-size: 62.5%; // 10/16 = 0.625 => 1rem is equal to 10px
+   font-size: 62.5%; // 10/16 = 0.625 => 1rem is equal to 10px (16px is default browser's font size)
    font-family: Comfortaa;
 }
 
 body {
-   background-color: $background-color-primary;
-   border: 3rem solid $background-color-secondary;
+   background-color: $background-color-secondary;
+   padding: 3rem;
    height: 100vh;
+}
+
+.container {
+   height: 100%;
+   background-color: $background-color-primary;
+   position: relative;
 }
