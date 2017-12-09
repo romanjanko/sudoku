@@ -1,0 +1,16 @@
+* {
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+}
+
+html {
+   font-size: 62.5%; // 10/16 = 0.625 => 1rem is equal to 10px
+   font-family: Comfortaa;
+}
+
+body {
+   background-color: $background-color-primary;
+   border: 3rem solid $background-color-secondary;
+   height: 100vh;
+}

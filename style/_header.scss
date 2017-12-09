@@ -1,0 +1,46 @@
+.header {
+   font-size: 8rem;
+   text-transform: uppercase;
+   text-align: center;
+   
+   &__letter {
+      display: inline-block;
+      width: 10rem;
+      height: 10rem;
+      line-height: 11rem; 
+      color: $header-color-white;
+      text-align: center;
+
+      &:not(:last-child) {
+         margin-right: 2rem;
+      }
+
+      &--circle {
+         border-radius: 50%;
+      }
+
+      &--red {
+         background-color: $header-color-red;
+      }
+      
+      &--orange {
+         background-color: $header-color-orange;
+      }
+      
+      &--purple {
+         background-color: $header-color-purple;
+      }
+      
+      &--green {
+         background-color: $header-color-green;
+      }
+
+      &--blue {
+         background-color: $header-color-blue;
+      }
+      
+      &--yellow {
+         background-color: $header-color-yellow;
+      }
+   }
+}
