@@ -12,11 +12,11 @@ html {
 body {
    background-color: $background-color-secondary;
    padding: 3rem;
-   height: 100vh;
 }
 
 .container {
    height: 100%;
-   background-color: $background-color-primary;
    position: relative;
+   background-color: $background-color-primary;
+   border-radius: .3rem;
 }

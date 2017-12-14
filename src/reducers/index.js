@@ -1,7 +1,9 @@
 import { combineReducers } from 'redux';
 
+import boardCellsReducer from './BoardCellsReducer'
+
 const rootReducer = combineReducers({
-  boardCells: (state = []) => state
+  boardCells: boardCellsReducer
 });
 
 export default rootReducer;

@@ -1,3 +1,58 @@
 .board {
-   margin-top: 5rem;
+   margin: 2rem 0;
+   text-align: center;
+   
+   &__container {
+      display: inline-block;
+      padding: 3rem;
+      background-color: $board-color-gray-dark;
+      border-radius: .3rem;
+   }
+
+   &__content {
+      border-collapse: collapse;
+   }
+
+   &__row:nth-child(3),
+   &__row:nth-child(6) {
+      border-bottom: .4rem solid $board-color-gray-medium-dark;
+   }
+
+   &__column:nth-child(3),
+   &__column:nth-child(6) {
+      border-right: .4rem solid $board-color-gray-medium-dark;
+   }
+
+   &__cell {
+      border-radius: 50%;
+      font-size: 3.9rem;
+      width: 4.5rem;
+      height: 4.5rem;
+      text-align: center;
+      outline: none;
+      border-width: 0px;
+      margin: .4rem;
+      color: $board-color-white;
+      background-color: $board-color-gray;
+
+      &--selectable {
+         cursor: pointer;
+
+         &:focus {
+            color: transparent;
+            text-shadow: 0 0 0 $board-color-white;
+            border: .4rem dashed $board-color-black;
+         }
+      }
+
+      &--1 { background-color: $board-color-green-blue; }
+      &--2 { background-color: $board-color-yellow; }
+      &--3 { background-color: $board-color-purple; }
+      &--4 { background-color: $board-color-orange; }
+      &--5 { background-color: $board-color-blue; }
+      &--6 { background-color: $board-color-green; }
+      &--7 { background-color: $board-color-blue-dark; }
+      &--8 { background-color: $board-color-red-dark; }
+      &--9 { background-color: $board-color-yellow-dark; }
+   }
 }

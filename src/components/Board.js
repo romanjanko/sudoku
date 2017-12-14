@@ -1,40 +1,22 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux'
 import groupBy from 'lodash/collection/groupBy';
 
-import { setCell, deleteCell } from '../actions';
+import BoardCell from './BoardCell';
 
 class Board extends Component {
    static propTypes = {
-      cells: React.PropTypes.array.isRequired,
-      setCell: React.PropTypes.func.isRequired,
-      deleteCell: React.PropTypes.func.isRequired
+      cells: React.PropTypes.array.isRequired
    }
 
    static defaultProps = {
       cells: []
    }
 
-   handleCellChange(row, column, event) {
-      event.preventDefault();
-      const { setCell, deleteCell } = this.props;
-      const enteredValue = event.target.value;
-
-      if (enteredValue)
-         setCell(row, column, Number(enteredValue));
-      else
-         deleteCell(row, column);
-   }
-
    renderCell(cell) {
       return (
-         <td key={`${cell.row}_${cell.column}`}>
-            <input type="text" 
-                   value={cell.value} 
-                   readOnly={cell.readOnly} 
-                   onChange={this.handleCellChange.bind(this, cell.row, cell.column)}
-                   style={{width: "45px", fontSize: "24px"}} />
+         <td key={`${cell.row}_${cell.column}`} className="board__column">
+            <BoardCell cell={cell} />
          </td>
       );
    }
@@ -46,7 +28,7 @@ class Board extends Component {
       const rowOfFirstCell = row[0].row;
 
       return (
-         <tr key={rowOfFirstCell}>
+         <tr key={rowOfFirstCell} className="board__row">
             { row.map(cell => this.renderCell(cell))}
          </tr>
       );
@@ -58,11 +40,13 @@ class Board extends Component {
 
       return (
          <div className="board">
-            <table>
-               <tbody>
-                  { Object.keys(cellsByRows).map(row => this.renderRow(cellsByRows[row])) }
-               </tbody>
-            </table>
+            <div className="board__container">
+               <table className="board__content">
+                  <tbody>
+                     { Object.keys(cellsByRows).map(row => this.renderRow(cellsByRows[row])) }
+                  </tbody>
+               </table>
+            </div>
          </div>
       );
    }
@@ -72,7 +56,4 @@ const mapStateToProps = (state) => ({
    cells: state.boardCells
 });
 
-const mapDispatchToProps = (dispatch) =>
-   bindActionCreators({ setCell, deleteCell }, dispatch);
-
-export default connect(mapStateToProps, mapDispatchToProps)(Board);
+export default connect(mapStateToProps)(Board);
