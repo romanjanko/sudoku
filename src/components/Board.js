@@ -52,6 +52,7 @@ class Board extends Component {
    }
 }
 
+//TODO get rid of redux dependency
 const mapStateToProps = (state) => ({
    cells: state.boardCells
 });

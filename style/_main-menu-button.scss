@@ -1,0 +1,35 @@
+.main-menu-button {
+   background-color: $background-color-secondary;
+   height: 7rem;
+   width: 7rem;
+   border-radius: 50%;
+   position: absolute;
+   top: 2rem;
+   right: 2rem;
+   cursor: pointer;
+   
+   &__line {
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+
+      &,
+      &::after,
+      &::before {
+         background-color: $background-color-primary;
+         position: absolute;
+         width: 3.5rem;
+         height: .4rem;
+      }
+
+      &::before,
+      &::after {
+         content: "";
+         display: inline-block;
+         left: 0;
+      }
+
+      &::before { top: -1rem; }
+      &::after { top: 1rem; }
+   }
+}
