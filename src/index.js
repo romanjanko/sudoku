@@ -13,6 +13,7 @@ import GameEngineMiddleware from './middleware/GameEngineMiddleware';
 const gameEngine = new GameEngine();
 
 const initialState = {
+   boardSize: gameEngine.getBoardSize(),
    boardCells: gameEngine.getPlayerBoardCells()
 }
 

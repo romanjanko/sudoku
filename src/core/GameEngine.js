@@ -7,6 +7,7 @@ export default class GameEngine {
    constructor() {
       this.newGameGenerator = new NewGameGenerator();
       this.playerBoardCreator = new PlayerBoardCreator();
+
       this.newGame();   //TODO add default gameDifficulty
    }
    
@@ -37,4 +38,6 @@ export default class GameEngine {
    }
 
    isGameSuccessfullySolved = () => areBoardsEqual(this.solutionBoard, this.playerBoard);
+
+   getBoardSize = () => this.playerBoard.getBoardSize();
 }

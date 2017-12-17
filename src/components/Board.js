@@ -1,49 +1,44 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import groupBy from 'lodash/collection/groupBy';
 
 import BoardCell from './BoardCell';
 
 class Board extends Component {
    static propTypes = {
-      cells: React.PropTypes.array.isRequired
+      boardSize: React.PropTypes.number.isRequired
    }
 
-   static defaultProps = {
-      cells: []
-   }
-
-   renderCell(cell) {
+   renderCell(row, column) {
       return (
-         <td key={`${cell.row}_${cell.column}`} className="board__column">
-            <BoardCell cell={cell} />
+         <td key={`${row}_${column}`} className="board__column">
+            <BoardCell row={row} column={column} />
          </td>
       );
    }
 
-   renderRow(row) {
-      if (!row) 
-         return null;
-
-      const rowOfFirstCell = row[0].row;
+   renderRow(rowNumber) {
+      const { boardSize } = this.props;
+      const columnNumbers = this.generateSequence(boardSize);
 
       return (
-         <tr key={rowOfFirstCell} className="board__row">
-            { row.map(cell => this.renderCell(cell))}
+         <tr key={rowNumber} className="board__row">
+            { columnNumbers.map(columnNumber => this.renderCell(rowNumber, columnNumber))}
          </tr>
       );
    }
 
+   generateSequence = (size) => Array.from(Array(size), (val, index) => index + 1);
+
    render() {
-      const { cells } = this.props;
-      const cellsByRows = groupBy(cells, cell => cell.row);
+      const { boardSize } = this.props;
+      const rowNumbers = this.generateSequence(boardSize);
 
       return (
          <div className="board">
             <div className="board__container">
                <table className="board__content">
                   <tbody>
-                     { Object.keys(cellsByRows).map(row => this.renderRow(cellsByRows[row])) }
+                     { rowNumbers.map(row => this.renderRow(row)) }
                   </tbody>
                </table>
             </div>
@@ -52,9 +47,8 @@ class Board extends Component {
    }
 }
 
-//TODO get rid of redux dependency
 const mapStateToProps = (state) => ({
-   cells: state.boardCells
+   boardSize: state.boardSize
 });
 
 export default connect(mapStateToProps)(Board);
