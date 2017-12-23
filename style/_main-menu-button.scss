@@ -9,7 +9,8 @@
    cursor: pointer;
    z-index: 200;
    
-   &__icon {
+   &__hamburger-icon,
+   &__cross-icon {
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
@@ -23,19 +24,36 @@
          width: 3.5rem;
          height: .4rem;
       }
-
+      
       &::before,
       &::after {
          content: "";
          position: absolute;
          left: 0;
-         transition: top .3s ease;
+         transition: all .3s ease;
       }
 
       &::before { top: -1rem; }
       &::after { top: 1rem; }
    }
+   
+   &__cross-icon { 
+      background-color: transparent;
 
-   &:hover &__icon::before { top: -1.2rem }
-   &:hover &__icon::after { top: 1.2rem }
+      &::before {
+         top: 0;
+         transform: rotate(45deg);
+      }
+
+      &::after { 
+         top: 0; 
+         transform: rotate(-45deg);
+      }
+   }
+
+   &:hover &__hamburger-icon::before { top: -1.2rem }
+   &:hover &__hamburger-icon::after { top: 1.2rem }
+   
+   &:hover &__cross-icon::before { left: -.25rem; width: 4rem; }
+   &:hover &__cross-icon::after { left: -.25rem; width: 4rem; }
 }

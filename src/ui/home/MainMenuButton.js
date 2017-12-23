@@ -4,7 +4,11 @@ import { Link } from 'react-router-dom';
 const MainMenuButton = (props) => {
    return (
       <Link className="main-menu-button" to={props.defaultButtonStateOn ? "/menu" : "/"}>
-         <span className="main-menu-button__icon" />
+         {props.defaultButtonStateOn ?
+            <span className="main-menu-button__hamburger-icon" />
+            :
+            <span className="main-menu-button__cross-icon" />
+         }
       </Link>
    );
 };
