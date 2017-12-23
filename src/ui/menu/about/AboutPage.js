@@ -9,16 +9,14 @@ const AboutPage = () => (
       </div>
       <div className="main-menu__text-block">
          <p className="par">
-            Created as a hobby project by Roman Janko.
+            Created as a hobby project. Written in React and Redux. Repo can be found on&nbsp;
+            <a className="link" href="https://github.com/romanjanko/sudoku">
+               <i className="fab fa-github" />
+            </a>.
          </p>
          <p className="par">
             Design was inspired by <a className="link" href="http://www.banana-co.com/">Banana & Co.</a>'s 
-            beautiful mobile game. Make sure to check it out.
-         </p>
-         <p className="center">
-            <a className="link" href="https://github.com/romanjanko/sudoku">
-               <i className="fab fa-github" />
-            </a>
+            beautiful mobile game. Make sure to check it out too!
          </p>
       </div>
    </div>

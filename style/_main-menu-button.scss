@@ -23,6 +23,7 @@
          background-color: $theme-color-primary;
          width: 3.5rem;
          height: .4rem;
+         transition: all .3s ease;
       }
       
       &::before,
@@ -30,7 +31,6 @@
          content: "";
          position: absolute;
          left: 0;
-         transition: all .3s ease;
       }
 
       &::before { top: -1rem; }
