@@ -10,13 +10,5 @@ html {
 }
 
 body {
-   background-color: $background-color-secondary;
-   padding: 3rem;
-}
-
-.container {
-   height: 100%;
-   position: relative;
-   background-color: $background-color-primary;
-   border-radius: .3rem;
+   background-color: $theme-color-secondary;
 }

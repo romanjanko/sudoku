@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
 import find from 'lodash/collection/find';
 
-import { setCell, deleteCell } from '../actions';
+import { setCell, deleteCell } from './actions';
 
 class BoardCell extends Component {
    static propTypes = {

@@ -5,10 +5,10 @@ import {
    SET_CELL_EVENT, 
    DELETE_CELL_EVENT,
    gameFinished,
-   setCell } from '../actions';
+   setCell } from './board/actions';
 
-const GameEngineMiddleware = gameEngine => store => next => action => {
-   console.log("GameEngineMiddleware", action);
+const gameEngineMiddleware = gameEngine => store => next => action => {
+   console.log("gameEngineMiddleware", action);
 
    switch(action.type) {
       case NEW_GAME_EVENT: {
@@ -38,4 +38,4 @@ const GameEngineMiddleware = gameEngine => store => next => action => {
    return next(action);
 };
 
-export default GameEngineMiddleware;
+export default gameEngineMiddleware;

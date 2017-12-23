@@ -1,4 +1,5 @@
 
+//TODO better exports types and actions only
 export const NEW_GAME_EVENT = 'NEW_GAME_EVENT';
 export const GAME_FINISHED_EVENT = 'GAME_FINISHED_EVENT';
 export const GIVE_HINT_EVENT = 'GIVE_HINT_EVENT';
@@ -11,11 +12,12 @@ export const newGame = (difficulty) => ({
    difficulty
 });
 
-export const gameFinished = (player, difficulty, time) => ({
+export const gameFinished = (player, difficulty, time, hints) => ({
    type: GAME_FINISHED_EVENT,
    player, 
    difficulty, 
-   time
+   time,
+   hints
 });
 
 export const giveHint = (row, column) => ({

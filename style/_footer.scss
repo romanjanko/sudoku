@@ -2,12 +2,4 @@
    position: absolute;
    bottom: -1.5rem;
    right: 0;
-
-   &__link {
-      &:link,
-      &:visited {
-         text-decoration: none;
-         color: inherit;
-      }
-   }
 }

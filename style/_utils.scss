@@ -1,0 +1,16 @@
+.link {
+   &:link,
+   &:visited,
+   &:active { //TODO what other states?
+      text-decoration: none;
+      color: inherit;
+   }
+}
+
+.par {
+   padding-bottom: 1.5rem;
+}
+
+.center {
+   text-align: center;
+}

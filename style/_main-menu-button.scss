@@ -1,5 +1,5 @@
 .main-menu-button {
-   background-color: $background-color-secondary;
+   background-color: $theme-color-tertiary;
    height: 7rem;
    width: 7rem;
    border-radius: 50%;
@@ -7,17 +7,19 @@
    top: 2rem;
    right: 2rem;
    cursor: pointer;
+   z-index: 200;
    
-   &__line {
+   &__icon {
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
+      display: inline-block;
+      position: absolute;
 
       &,
       &::after,
       &::before {
-         background-color: $background-color-primary;
-         position: absolute;
+         background-color: $theme-color-primary;
          width: 3.5rem;
          height: .4rem;
       }
@@ -25,11 +27,15 @@
       &::before,
       &::after {
          content: "";
-         display: inline-block;
+         position: absolute;
          left: 0;
+         transition: top .3s ease;
       }
 
       &::before { top: -1rem; }
       &::after { top: 1rem; }
    }
+
+   &:hover &__icon::before { top: -1.2rem }
+   &:hover &__icon::after { top: 1.2rem }
 }
