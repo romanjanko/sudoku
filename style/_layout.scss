@@ -1,0 +1,36 @@
+.layout {
+   background-color: $theme-color-secondary;
+   padding: 3rem;
+   
+   &__background {
+      background-color: $theme-color-primary;
+      position: relative;
+      border-radius: .3rem;
+      min-height: 68.5rem; //TODO
+   
+      &--secondary-color {
+         background-color: $theme-color-secondary;
+      }
+   }
+
+   &__heading {
+      text-align: center;
+   }
+
+   &__button {
+      position: absolute;
+      top: 2rem;
+      right: 2rem;
+   }
+
+   &__content {
+      margin: 2rem 0 0;
+      text-align: center;
+   }
+
+   &__footer {
+      position: absolute;
+      bottom: -1.5rem;
+      right: 0;
+   }
+}

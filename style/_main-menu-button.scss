@@ -1,21 +1,20 @@
 .main-menu-button {
+   display: inline-block;
+   position: relative;
    background-color: $theme-color-tertiary;
    height: 7rem;
    width: 7rem;
    border-radius: 50%;
-   position: absolute;
-   top: 2rem;
-   right: 2rem;
    cursor: pointer;
    z-index: 200;
    
    &__hamburger-icon,
    &__cross-icon {
+      display: inline-block;
+      position: absolute;
       left: 50%;
       top: 50%;
       transform: translate(-50%, -50%);
-      display: inline-block;
-      position: absolute;
 
       &,
       &::after,

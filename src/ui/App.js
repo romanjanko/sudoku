@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
-import { Route, withRouter } from 'react-router-dom';
+import { Route, withRouter, Switch } from 'react-router-dom';
 
 import MainHeading from './home/MainHeading';
 import MainMenuButton from './home/MainMenuButton';
-import Frame from './home/Frame';
-import Background from './home/Background';
+import Layout from './home/Layout';
+import NotFoundPage from './home/NotFoundPage';
 import BoardPage from './board/BoardPage';
 import MainMenuPage from './menu/MainMenuPage';
+import Footer from './home/Footer';
 
 class App extends Component {
    isRootPathMatched = () => {
@@ -18,15 +19,17 @@ class App extends Component {
       const isRootPath = this.isRootPathMatched();
 
       return (
-         <Frame>
-            <Background defaultBackgroundOn={isRootPath}>
-               <MainHeading />
-               <MainMenuButton defaultButtonStateOn={isRootPath}/>
-
+         <Layout
+            defaultBackgroundOn={isRootPath}
+            renderMainHeading={<MainHeading />}
+            renderMainMenuButton={<MainMenuButton defaultButtonStateOn={isRootPath}/>}
+            renderFooter={<Footer />} >
+            <Switch>
                <Route exact path="/" component={BoardPage} />
                <Route path="/menu" component={MainMenuPage} />
-            </Background>
-         </Frame>
+               <Route path="*" component={NotFoundPage} />
+            </Switch>
+         </Layout>
       );
    }
 }
