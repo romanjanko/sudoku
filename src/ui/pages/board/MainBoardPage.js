@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import Board from '../../components/board/Board';
-import NewGameButton from '../../components/board/NewGameButton';
-import PauseButton from '../../components/board/PauseButton';
-import HintButton from '../../components/board/HintButton';
+import NewGameButton from '../../components/board/buttons/NewGameButton';
+import PauseButton from '../../components/board/buttons/PauseButton';
+import HintButton from '../../components/board/buttons/HintButton';
 
 class MainBoardPage extends Component {
    componentDidUpdate() {

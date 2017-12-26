@@ -12,13 +12,25 @@ const MainMenuPage = ({ match }) => (
          <Route exact path={match.url} render={() => (
             <ul className="main-menu__list">
                <li className="main-menu__item">
-                  <Link className="main-menu__link" to={`${match.url}/settings`}>Settings</Link>
+                  <div className="button">
+                     <Link className="button__link button__link--large" to={`${match.url}/settings`}>
+                        Settings
+                     </Link>
+                  </div>
                </li>
                <li className="main-menu__item">
-                  <Link className="main-menu__link" to={`${match.url}/leaderboard`}>Leaderboard</Link>
+                  <div className="button">
+                     <Link className="button__link button__link--large" to={`${match.url}/leaderboard`}>
+                        Leaderboard
+                     </Link>
+                  </div>
                </li>
                <li className="main-menu__item">
-                  <Link className="main-menu__link" to={`${match.url}/about`}>About</Link>
+                  <div className="button">
+                     <Link className="button__link button__link--large" to={`${match.url}/about`}>
+                        About
+                     </Link>
+                  </div>
                </li>
             </ul>
          )} />

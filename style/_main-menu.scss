@@ -35,22 +35,6 @@
    }
 
    &__item {
-      background-color: $theme-color-tertiary;
       margin: 1rem;
-      width: 45rem; //TODO
-      text-align: right;
-   }
-
-   &__link {
-      display: block;
-      color: $theme-color-primary;
-      font-size: 4rem;
-      text-decoration: none;
-      padding: .5rem 3rem;
-      transition: all .3s ease;
-
-      &:hover {
-         transform: translateY(-.2rem);
-      }
    }
 }

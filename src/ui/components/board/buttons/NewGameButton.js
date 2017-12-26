@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom';
 
 const NewGameButton = () => {
    return (
-      <Link to="/new-game">New Game</Link>
+      <div className="button">
+         <Link to="/new-game" className="button__link">New Game</Link>
+      </div>
    );
 };
 

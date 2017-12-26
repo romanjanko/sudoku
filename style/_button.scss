@@ -1,0 +1,27 @@
+.button {
+   display: inline-block;
+   background-color: $theme-color-tertiary;
+   
+   &__link {
+      display: block;
+      color: $theme-color-primary;
+      text-decoration: none;
+      transition: all .3s ease;
+      
+      font-size: 2rem;
+      width: 13rem;
+      padding: .5rem 1rem;
+      text-align: center;
+      
+      &--large {
+         font-size: 4rem;
+         width: 45rem;
+         padding: .5rem 3rem;
+         text-align: right;
+      }
+
+      &:hover {
+         transform: translateY(-.2rem);
+      }
+   }
+}

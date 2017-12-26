@@ -3,7 +3,9 @@ import { Link } from 'react-router-dom';
 
 const PauseButton = () => {
    return (
-      <Link to="/game-paused">Pause</Link>
+      <div className="button">
+         <Link to="/game-paused" className="button__link">Pause</Link>
+      </div>
    );
 };
 
