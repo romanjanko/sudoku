@@ -1,12 +1,12 @@
 import React from 'react';
 
-const Player = () => (
+const Time = () => (
    <div>
       <span className="padding-right-small">
-         <i className="fas fa-user" />
+         <i className="fas fa-clock" />
       </span>
-      <span>Player</span>
+      <span>Time</span>
    </div>
 );
 
-export default Player;
+export default Time;

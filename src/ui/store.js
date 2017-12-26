@@ -11,8 +11,8 @@ const initialState = {
    boardCells: gameEngine.getPlayerBoardCells(),
    player: null,
    difficulty: null,
-   time: null,
-   hints: null,
+   time: 0,
+   hints: 0,
    finished: false
 }
 

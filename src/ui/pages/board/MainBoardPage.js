@@ -6,6 +6,11 @@ import NewGameButton from '../../components/board/buttons/NewGameButton';
 import PauseButton from '../../components/board/buttons/PauseButton';
 import HintButton from '../../components/board/buttons/HintButton';
 
+import Difficulty from '../../components/board/gauges/Difficulty';
+import Hints from '../../components/board/gauges/Hints';
+import Player from '../../components/board/gauges/Player';
+import Time from '../../components/board/gauges/Time';
+
 class MainBoardPage extends Component {
    componentDidUpdate() {
       const { history } = this.props;
@@ -31,16 +36,16 @@ class MainBoardPage extends Component {
             </div>
             <div className="board-page-layout__right">
                <div className="board-page-layout__element">
-                  Player
+                  <Player />
                </div>
                <div className="board-page-layout__element">
-                  Time
+                  <Time />
                </div>
                <div className="board-page-layout__element">
-                  Easy
+                  <Difficulty />
                </div>
                <div className="board-page-layout__element">
-                  Hints
+                  <Hints />
                   <HintButton />
                </div>
             </div>

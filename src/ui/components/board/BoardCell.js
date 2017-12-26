@@ -84,7 +84,7 @@ const mapStateToProps = (state, ownProps) => {
    };
 };
 
-const mapDispatchToProps = (dispatch) =>
+const mapDispatchToProps = dispatch =>
    bindActionCreators({ setCell, deleteCell }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(BoardCell);
