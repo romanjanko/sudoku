@@ -1,3 +1,4 @@
+import { BrowserHistory } from 'react-router-dom';
 
 import { 
    NEW_GAME_EVENT,
@@ -5,7 +6,7 @@ import {
    SET_CELL_EVENT, 
    DELETE_CELL_EVENT,
    gameFinished,
-   setCell } from './board/actions';
+   setCell } from './components/board/actions';
 
 const gameEngineMiddleware = gameEngine => store => next => action => {
    console.log("gameEngineMiddleware", action);

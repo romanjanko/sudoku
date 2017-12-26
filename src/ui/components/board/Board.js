@@ -34,15 +34,11 @@ class Board extends Component {
       const rowNumbers = this.generateSequence(boardSize);
 
       return (
-         <div className="board">
-            <div className="board__container">
-               <table className="board__content">
-                  <tbody>
-                     { rowNumbers.map(row => this.renderRow(row)) }
-                  </tbody>
-               </table>
-            </div>
-         </div>
+         <table className="board__content">
+            <tbody>
+               { rowNumbers.map(row => this.renderRow(row)) }
+            </tbody>
+         </table>
       );
    }
 }

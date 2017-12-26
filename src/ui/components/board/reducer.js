@@ -2,7 +2,8 @@ import findIndex from 'lodash/array/findIndex';
 
 import {
    SET_CELL_EVENT,
-   DELETE_CELL_EVENT 
+   DELETE_CELL_EVENT,
+   GAME_FINISHED_EVENT
 } from './actions';
 
 const findCellIndex = (cells, row, column) => 
@@ -36,6 +37,12 @@ export default function boardReducer(state = {}, action) {
          return {
             ...state,
             boardCells
+         };
+      }
+      case GAME_FINISHED_EVENT: {
+         return {
+            ...state,
+            finished: true
          };
       }
    }

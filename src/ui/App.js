@@ -1,31 +1,41 @@
 import React, { Component } from 'react';
-import { Route, withRouter, Switch } from 'react-router-dom';
+import { Route, withRouter, Switch, matchPath } from 'react-router-dom';
 
-import MainHeading from './home/MainHeading';
-import MainMenuButton from './home/MainMenuButton';
-import Layout from './home/Layout';
-import NotFoundPage from './home/NotFoundPage';
-import BoardPage from './board/BoardPage';
-import MainMenuPage from './menu/MainMenuPage';
-import Footer from './home/Footer';
+import MainHeading from './components/home/MainHeading';
+import MainMenuButton from './components/home/MainMenuButton';
+import Layout from './components/home/Layout';
+import Footer from './components/home/Footer';
+
+import NotFoundPage from './pages/NotFoundPage';
+import MainBoardPage from './pages/board/MainBoardPage';
+import NewGamePage from './pages/board/NewGamePage';
+import GameFinishedPage from './pages/board/GameFinishedPage';
+import GamePausedPage from './pages/board/GamePausedPage';
+import MainMenuPage from './pages/menu/MainMenuPage';
 
 class App extends Component {
-   isRootPathMatched = () => {
-      const { match } = this.props;
-      return match.isExact && match.path === "/";
+   isMainMenuOpened = () => {
+      const { location } = this.props;
+
+      return matchPath(location.pathname, {
+         path: "/menu"
+      });
    }
 
    render() {
-      const isRootPath = this.isRootPathMatched();
-
+      const isMainMenuOpened = this.isMainMenuOpened();
+      
       return (
          <Layout
-            defaultBackgroundOn={isRootPath}
+            defaultBackgroundOn={!isMainMenuOpened}
             renderMainHeading={<MainHeading />}
-            renderMainMenuButton={<MainMenuButton defaultButtonStateOn={isRootPath}/>}
+            renderMainMenuButton={<MainMenuButton defaultButtonStateOn={!isMainMenuOpened}/>}
             renderFooter={<Footer />} >
             <Switch>
-               <Route exact path="/" component={BoardPage} />
+               <Route exact path="/" component={MainBoardPage} />
+               <Route path="/new-game" component={NewGamePage} />
+               <Route path="/game-finished" component={GameFinishedPage} />
+               <Route path="/game-paused" component={GamePausedPage} />
                <Route path="/menu" component={MainMenuPage} />
                <Route path="*" component={NotFoundPage} />
             </Switch>

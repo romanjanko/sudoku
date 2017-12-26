@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 
-//TODO styling
+//TODO styling - /blabla and /menu/blabla!
 const NotFoundPage = () => (
-   <div className="margin-top-high">
+   <div>
       <p className="par">
       Sorry, this page isn't available.
       </p>

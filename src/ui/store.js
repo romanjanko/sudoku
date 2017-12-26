@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware } from 'redux';
 
-import boardReducer from './board/reducer';
+import boardReducer from './components/board/reducer';
 import GameEngine from '../core/GameEngine';
 import gameEngineMiddleware from './gameEngineMiddleware';
 
@@ -12,7 +12,8 @@ const initialState = {
    player: null,
    difficulty: null,
    time: null,
-   hints: null
+   hints: null,
+   finished: false
 }
 
 const middleware = [

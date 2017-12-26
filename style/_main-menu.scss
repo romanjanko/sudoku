@@ -2,6 +2,7 @@
    text-align: center;
    padding-top: 10rem;
    font-size: 2.5rem;
+   color: $theme-color-tertiary;
 
    &__text-block {
       text-align: justify;
@@ -9,8 +10,8 @@
 
    &__heading,
    &__arrow-link {
-      font-size: 4rem;
       color: $theme-color-tertiary;
+      font-size: 4rem;
       margin-bottom: 2rem;
    }
    
