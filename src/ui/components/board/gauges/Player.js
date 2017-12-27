@@ -1,12 +1,21 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-const Player = () => (
+const Player = ({ player }) => (
    <div>
       <span className="padding-right-small">
          <i className="fas fa-user" />
       </span>
-      <span>Player</span>
+      <span>{player}</span>
    </div>
 );
 
-export default Player;
+Player.propTypes = {
+   player: React.PropTypes.string.isRequired
+};
+
+const mapStateToProps = state => ({
+   player: state.player
+});
+
+export default connect(mapStateToProps)(Player);
