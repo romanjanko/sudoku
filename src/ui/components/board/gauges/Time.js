@@ -1,12 +1,22 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import numeral from 'numeral';
 
-const Time = () => (
+const Time = ({ time }) => (
    <div>
       <span className="padding-right-small">
          <i className="fas fa-clock" />
       </span>
-      <span>Time</span>
+      <span>{numeral(time).format("00:00:00")}</span>
    </div>
 );
 
-export default Time;
+Time.propTypes = {
+   time: React.PropTypes.number.isRequired
+};
+
+const mapStateToProps = state => ({
+   time: state.time
+});
+
+export default connect(mapStateToProps)(Time);

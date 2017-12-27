@@ -11,7 +11,7 @@ const initialState = {
    boardCells: null,
    player: null,
    difficulty: null,
-   time: 0,
+   time: 0, // seconds that has elapsed since the game started
    hints: 0,
    finished: false
 }
