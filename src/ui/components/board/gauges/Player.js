@@ -6,7 +6,7 @@ const Player = ({ player }) => (
       <span className="padding-right-small">
          <i className="fas fa-user" />
       </span>
-      <span>{player}</span>
+      <span>{player && player.length > 0 ? player : "Anonymous player"}</span>
    </div>
 );
 
