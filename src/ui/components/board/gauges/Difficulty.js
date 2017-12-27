@@ -1,12 +1,25 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
-const Difficulty = () => (
+import GameEngine from '../../../../core/GameEngine';
+
+const Difficulty = ({ difficulty }) => (
    <div>
       <span className="padding-right-small">
          <i className="fas fa-signal" />
       </span>
-      <span>Difficulty</span>
+      {difficulty === GameEngine.difficulty.easy && <span>Easy</span>}
+      {difficulty === GameEngine.difficulty.medium && <span>Medium</span>}
+      {difficulty === GameEngine.difficulty.hard && <span>Hard</span>}
    </div>
 );
 
-export default Difficulty;
+Difficulty.propTypes = {
+   difficulty: React.PropTypes.string.isRequired
+};
+
+const mapStateToProps = state => ({
+   difficulty: state.difficulty
+});
+
+export default connect(mapStateToProps)(Difficulty);
