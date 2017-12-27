@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 import BoardCell from './BoardCell';
+import Timer from './Timer';
 
 class Board extends Component {
    static propTypes = {
@@ -34,11 +35,14 @@ class Board extends Component {
       const rowNumbers = this.generateSequence(boardSize);
 
       return (
-         <table className="board__content">
-            <tbody>
-               { rowNumbers.map(row => this.renderRow(row)) }
-            </tbody>
-         </table>
+         <div>
+            <Timer />
+            <table className="board__content">
+               <tbody>
+                  { rowNumbers.map(row => this.renderRow(row)) }
+               </tbody>
+            </table>
+         </div>
       );
    }
 }

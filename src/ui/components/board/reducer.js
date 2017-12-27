@@ -5,7 +5,8 @@ import {
    DELETE_CELL_EVENT,
    GAME_FINISHED_EVENT,
    GIVE_HINT_EVENT,
-   START_NEW_GAME_EVENT
+   START_NEW_GAME_EVENT,
+   INCREMENT_TIME_EVENT
 } from './actions';
 
 const findCellIndex = (cells, row, column) => 
@@ -64,6 +65,12 @@ export default function boardReducer(state = {}, action) {
          return {
             ...state,
             hints: state.hints + 1
+         };
+      }
+      case INCREMENT_TIME_EVENT: {
+         return {
+            ...state,
+            time: state.time + 1
          };
       }
    }
