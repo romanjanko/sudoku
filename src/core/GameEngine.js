@@ -1,43 +1,29 @@
 
 import NewGameGenerator from './game-generating/NewGameGenerator';
 import PlayerBoardCreator from './game-generating/PlayerBoardCreator';
-import { areBoardsEqual } from './boards/boardUtils';
+import Game from './Game';
 
 export default class GameEngine {
    constructor() {
       this.newGameGenerator = new NewGameGenerator();
       this.playerBoardCreator = new PlayerBoardCreator();
-
-      this.newGame();   //TODO add default gameDifficulty
    }
+
+   static difficulty = {
+      easy: "easy",
+      medium: "medium",
+      hard: "hard"
+   };
    
    newGame(gameDifficulty) {
-      this.solutionBoard = this.newGameGenerator.generateGame();
-      this.playerBoard = this.playerBoardCreator.createFromGeneratedGame(this.solutionBoard, gameDifficulty);
+      const solutionBoard = this.newGameGenerator.generateGame();
+      const playerBoard = this.playerBoardCreator.createFromGeneratedGame(solutionBoard, gameDifficulty);
 
       console.log("Solution:");
-      this.solutionBoard.printToConsole();
+      solutionBoard.printToConsole();
       // console.log("Player board (init):");
-      // this.playerBoard.printToConsole();
+      // playerBoard.printToConsole();
+
+      return new Game(gameDifficulty, solutionBoard, playerBoard);
    }
-
-   hint(row, column) {
-      return this.solutionBoard.getCell(row, column);
-   }
-
-   getPlayerBoardCells() {
-      return this.playerBoard.getCells();
-   }
-
-   setPlayerBoardCell(row, column, number) {
-      this.playerBoard.setCell(row, column, number);
-   }
-
-   deletePlayerBoardCell(row, column) {
-      this.playerBoard.deleteCell(row, column);
-   }
-
-   isGameSuccessfullySolved = () => areBoardsEqual(this.solutionBoard, this.playerBoard);
-
-   getBoardSize = () => this.playerBoard.getBoardSize();
 }

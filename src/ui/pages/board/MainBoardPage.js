@@ -12,11 +12,24 @@ import Player from '../../components/board/gauges/Player';
 import Time from '../../components/board/gauges/Time';
 
 class MainBoardPage extends Component {
+   static propTypes = {
+      history: React.PropTypes.object.isRequired,
+      notStarted: React.PropTypes.bool.isRequired,
+      finished: React.PropTypes.bool.isRequired
+   }
+   
+   componentWillMount() {
+      const { history, notStarted } = this.props;
+
+      if (notStarted)
+         history.push("/new-game");
+   }
+
    componentDidUpdate() {
-      const { history } = this.props;
+      const { history, finished } = this.props;
 
       //TODO going back to / from /game-finished causing console log error.
-      if (this.props.finished)
+      if (finished)
          history.push("/game-finished");
    }
 
@@ -55,6 +68,7 @@ class MainBoardPage extends Component {
 }
 
 const mapStateToProps = state => ({
+   notStarted: !state.boardCells,
    finished: state.finished
 });
 

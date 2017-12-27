@@ -1,15 +1,25 @@
 
 //TODO better exports types and actions only
 export const NEW_GAME_EVENT = 'NEW_GAME_EVENT';
+export const START_NEW_GAME_EVENT = 'START_NEW_GAME_EVENT';
 export const GAME_FINISHED_EVENT = 'GAME_FINISHED_EVENT';
 export const GIVE_HINT_EVENT = 'GIVE_HINT_EVENT';
 
 export const SET_CELL_EVENT = 'SET_CELL_EVENT';
 export const DELETE_CELL_EVENT = 'DELETE_CELL_EVENT';
 
-export const newGame = (difficulty) => ({
+export const newGame = (player, difficulty) => ({
    type: NEW_GAME_EVENT,
+   player,
    difficulty
+});
+
+export const startNewGame = (player, difficulty, boardSize, boardCells) => ({
+   type: START_NEW_GAME_EVENT,
+   player,
+   difficulty,
+   boardSize,
+   boardCells
 });
 
 export const gameFinished = (player, difficulty, time, hints) => ({

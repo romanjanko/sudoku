@@ -4,7 +4,8 @@ import {
    SET_CELL_EVENT,
    DELETE_CELL_EVENT,
    GAME_FINISHED_EVENT,
-   GIVE_HINT_EVENT
+   GIVE_HINT_EVENT,
+   START_NEW_GAME_EVENT
 } from './actions';
 
 const findCellIndex = (cells, row, column) => 
@@ -12,6 +13,19 @@ const findCellIndex = (cells, row, column) =>
 
 export default function boardReducer(state = {}, action) {
    switch (action.type) {
+      case START_NEW_GAME_EVENT: {
+         const { boardSize, boardCells, player, difficulty } = action;
+         
+         return {
+            boardSize,
+            boardCells,
+            player,
+            difficulty,
+            time: 0,
+            hints: 0,
+            finished: false
+         };
+      }
       case SET_CELL_EVENT: {
          const { row, column, value } = action;
          const index = findCellIndex(state.boardCells, row, column);

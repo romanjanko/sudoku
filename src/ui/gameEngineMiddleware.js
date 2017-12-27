@@ -6,32 +6,46 @@ import {
    SET_CELL_EVENT, 
    DELETE_CELL_EVENT,
    gameFinished,
-   setCell } from './components/board/actions';
+   setCell,
+   startNewGame
+} from './components/board/actions';
+
+let game = null;
 
 const gameEngineMiddleware = gameEngine => store => next => action => {
    console.log("gameEngineMiddleware", action);
 
    switch(action.type) {
       case NEW_GAME_EVENT: {
-         gameEngine.newGame();
+         const { player, difficulty } = action;
+         game = gameEngine.newGame(difficulty);
+
+         store.dispatch(startNewGame(player, difficulty, 
+            game.getBoardSize(), game.getPlayerBoardCells()));
          break;
       }
       case GIVE_HINT_EVENT: {
+         if (!game) return;
+
          const { row, column } = action;
-         const value = gameEngine.hint(row, column);
+         const value = game.hint(row, column);
          store.dispatch(setCell(row, column, value));
          break;
       }
       case SET_CELL_EVENT: {
+         if (!game) return;
+
          const { row, column, value } = action;
-         gameEngine.setPlayerBoardCell(row, column, value);
-         if (gameEngine.isGameSuccessfullySolved())
+         game.setPlayerBoardCell(row, column, value);
+         if (game.isGameSuccessfullySolved())
             store.dispatch(gameFinished());
          break;
       }
       case DELETE_CELL_EVENT: {
+         if (!game) return;
+
          const { row, column } = action;
-         gameEngine.deletePlayerBoardCell(row, column);
+         game.deletePlayerBoardCell(row, column);
          break;
       }
    }

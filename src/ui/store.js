@@ -7,8 +7,8 @@ import gameEngineMiddleware from './gameEngineMiddleware';
 const gameEngine = new GameEngine();
 
 const initialState = {
-   boardSize: gameEngine.getBoardSize(),
-   boardCells: gameEngine.getPlayerBoardCells(),
+   boardSize: 0,
+   boardCells: null,
    player: null,
    difficulty: null,
    time: 0,
