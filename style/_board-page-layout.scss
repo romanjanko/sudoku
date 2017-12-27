@@ -28,8 +28,21 @@ $side-panel-width: 40rem;
       padding: 0 3rem;
    }
 
-   &__element {
+   &__line {
       margin-bottom: .5rem;
       color: $theme-color-tertiary;
+
+      &--gauge {
+         margin-bottom: 1.5rem;
+         position: relative;
+      }
+   }
+
+   &__hint-button {
+      display: inline-block;
+      position: absolute;
+
+      transform: translateY(-.5rem);
+      margin-left: 1rem;
    }
 }

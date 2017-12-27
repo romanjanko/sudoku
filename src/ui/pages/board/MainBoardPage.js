@@ -37,10 +37,10 @@ class MainBoardPage extends Component {
       return (
          <div className="board-page-layout">
             <div className="board-page-layout__left">
-               <div className="board-page-layout__element">
+               <div className="board-page-layout__line">
                   <NewGameButton />
                </div>
-               <div className="board-page-layout__element">
+               <div className="board-page-layout__line">
                   <PauseButton />
                </div>
             </div>
@@ -48,18 +48,20 @@ class MainBoardPage extends Component {
                <Board />
             </div>
             <div className="board-page-layout__right">
-               <div className="board-page-layout__element">
+               <div className="board-page-layout__line board-page-layout__line--gauge">
                   <Player />
                </div>
-               <div className="board-page-layout__element">
+               <div className="board-page-layout__line board-page-layout__line--gauge">
                   <Time />
                </div>
-               <div className="board-page-layout__element">
+               <div className="board-page-layout__line board-page-layout__line--gauge">
                   <Difficulty />
                </div>
-               <div className="board-page-layout__element">
+               <div className="board-page-layout__line board-page-layout__line--gauge">
                   <Hints />
-                  <HintButton />
+                  <div className="board-page-layout__hint-button">
+                     <HintButton />
+                  </div>
                </div>
             </div>
          </div>

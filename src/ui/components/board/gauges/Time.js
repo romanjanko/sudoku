@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import numeral from 'numeral';
 
 const Time = ({ time }) => (
-   <div>
-      <span className="padding-right-small">
+   <div className="gauge">
+      <span className="gauge__icon">
          <i className="fas fa-clock" />
       </span>
       <span>{numeral(time).format("00:00:00")}</span>

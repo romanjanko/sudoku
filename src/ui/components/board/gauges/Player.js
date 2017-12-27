@@ -2,8 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 const Player = ({ player }) => (
-   <div>
-      <span className="padding-right-small">
+   <div className="gauge">
+      <span className="gauge__icon">
          <i className="fas fa-user" />
       </span>
       <span>{player && player.length > 0 ? player : "Anonymous player"}</span>

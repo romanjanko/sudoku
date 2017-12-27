@@ -1,0 +1,11 @@
+.game-paused-page {
+   padding-top: 10rem;
+
+   &__text {
+      color: $theme-color-primary;
+   }
+
+   &__button {
+      margin-top: 2rem;
+   }
+}

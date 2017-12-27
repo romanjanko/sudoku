@@ -4,8 +4,8 @@ import { connect } from 'react-redux';
 import GameEngine from '../../../../core/GameEngine';
 
 const Difficulty = ({ difficulty }) => (
-   <div>
-      <span className="padding-right-small">
+   <div className="gauge">
+      <span className="gauge__icon">
          <i className="fas fa-signal" />
       </span>
       {difficulty === GameEngine.difficulty.easy && <span>Easy</span>}

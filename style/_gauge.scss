@@ -1,0 +1,9 @@
+.gauge {
+   display: inline-block;
+
+   &__icon {
+      margin-right: 1rem;
+      width: 25px;
+      display: inline-block;
+   }
+}
