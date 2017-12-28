@@ -1,0 +1,39 @@
+.new-game-form {
+   color: $theme-color-primary;
+   font-size: 2rem;
+
+   &__row {
+      margin-bottom: 2rem;
+   }
+
+   &__text-label {
+      margin-right: 1.5rem;
+   }
+
+   &__text-input {
+      background-color: inherit;
+      color: $theme-color-primary;
+      border: .2rem solid $theme-color-primary;
+      border-radius: .5rem;
+      font-size: inherit;
+      padding: .5rem 1rem;
+      outline: none;
+
+      &::selection {
+         background-color: $theme-color-tertiary;
+      }
+
+      //TODO add autoprefixer to support other browsers automatically
+      &::-webkit-input-placeholder {
+         color: $board-color-gray-medium-dark;
+      }
+   }
+
+   &__button {
+      display: inline-block;
+
+      &:not(:last-child) {
+         margin-right: 1rem;
+      }
+   }
+}

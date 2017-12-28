@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import GameEngine from '../../../core/GameEngine';
+import BackButton from './buttons/BackButton';
 
 export default class NewGameForm extends Component {
    static propTypes = {
@@ -43,12 +44,18 @@ export default class NewGameForm extends Component {
       const { player, difficulty } = this.state;
 
       return (
-         <form onSubmit={this.handleSubmit}>
-            <div>
-               <label htmlFor="player">Player name:</label>
-               <input type="text" id="player" value={player} onChange={this.handlePlayerChange} />
+         <form onSubmit={this.handleSubmit} className="new-game-form">
+            <div className="new-game-form__row">
+               <label htmlFor="player" className="new-game-form__text-label">Player name:</label>
+               <input 
+                  type="text" 
+                  className="new-game-form__text-input"
+                  id="player" 
+                  value={player} 
+                  onChange={this.handlePlayerChange}
+                  placeholder="Enter a player name here" />
             </div>
-            <div>
+            <div className="new-game-form__row">
                <input 
                   type="radio" 
                   id="easyDifficulty" 
@@ -74,10 +81,17 @@ export default class NewGameForm extends Component {
                   value={GameEngine.difficulty.hard}
                   checked={difficulty === GameEngine.difficulty.hard}
                   onChange={this.handleDifficultyChange} />
-               <label htmlFor="hardDifficulty">Hard</label>
+               <label htmlFor="hardDifficulty">Hard difficulty</label>
             </div>
-            <div>
-               <button type="submit">Start new game</button>
+            <div className="new-game-form__row">
+               <div className="new-game-form__button">
+                  <BackButton />
+               </div>
+               <div className="new-game-form__button">
+                  <div className="button">
+                        <button type="submit" className="button__button">Start new game</button>
+                  </div>
+               </div>
             </div>
          </form>
       );

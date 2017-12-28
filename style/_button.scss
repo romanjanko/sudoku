@@ -1,8 +1,10 @@
 .button {
    display: inline-block;
    background-color: $theme-color-tertiary;
+   overflow: hidden;
    
-   &__link {
+   &__link,
+   &__button {
       display: block;
       color: $theme-color-primary;
       text-decoration: none;
@@ -18,6 +20,22 @@
          width: 45rem;
          padding: .5rem 3rem;
          text-align: right;
+      }
+
+      &:hover {
+         transform: translateY(-.2rem);
+      }
+   }
+
+   &__button {
+      &,
+      &:active {
+         background-color: $theme-color-tertiary;
+         cursor: pointer;
+         border: none;
+         width: 20rem;
+         font-family: inherit;
+         outline: none;
       }
 
       &:hover {
