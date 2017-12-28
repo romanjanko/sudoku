@@ -42,7 +42,7 @@ export default class NewGameForm extends Component {
 
    render() {
       const { player, difficulty } = this.state;
-
+      //TODO get rid of autocomplete on player input
       return (
          <form onSubmit={this.handleSubmit} className="new-game-form">
             <div className="new-game-form__row">
@@ -52,7 +52,8 @@ export default class NewGameForm extends Component {
                   className="new-game-form__text-input"
                   id="player" 
                   value={player} 
-                  onChange={this.handlePlayerChange} />
+                  onChange={this.handlePlayerChange}
+                  autoFocus={true} />
             </div>
             <div className="new-game-form__row">
                <div className="radio">
