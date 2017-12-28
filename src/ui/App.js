@@ -23,13 +23,15 @@ class App extends Component {
    }
 
    render() {
+      const { location } = this.props;
       const isMainMenuOpened = this.isMainMenuOpened();
       
       return (
          <Layout
             defaultBackgroundOn={!isMainMenuOpened}
             renderMainHeading={<MainHeading />}
-            renderMainMenuButton={<MainMenuButton defaultButtonStateOn={!isMainMenuOpened}/>}
+            renderMainMenuButton={<MainMenuButton mainMenuIsOpened={isMainMenuOpened} 
+                                                  currentUrl={location.pathname} />}
             renderFooter={<Footer />} >
             <Switch>
                <Route exact path="/" component={MainBoardPage} />
