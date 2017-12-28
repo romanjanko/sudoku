@@ -22,11 +22,6 @@
       &::selection {
          background-color: $theme-color-tertiary;
       }
-
-      //TODO add autoprefixer to support other browsers automatically
-      &::-webkit-input-placeholder {
-         color: $board-color-gray-medium-dark;
-      }
    }
 
    &__button {

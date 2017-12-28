@@ -52,36 +52,53 @@ export default class NewGameForm extends Component {
                   className="new-game-form__text-input"
                   id="player" 
                   value={player} 
-                  onChange={this.handlePlayerChange}
-                  placeholder="Enter a player name here" />
+                  onChange={this.handlePlayerChange} />
             </div>
             <div className="new-game-form__row">
-               <input 
-                  type="radio" 
-                  id="easyDifficulty" 
-                  name="difficulty" 
-                  value={GameEngine.difficulty.easy}
-                  checked={difficulty === GameEngine.difficulty.easy}
-                  onChange={this.handleDifficultyChange} />
-               <label htmlFor="easyDifficulty">Easy</label>
+               <div className="radio">
+                  <input 
+                        type="radio" 
+                        className="radio__radio-input"
+                        id="easyDifficulty" 
+                        name="difficulty" 
+                        value={GameEngine.difficulty.easy}
+                        checked={difficulty === GameEngine.difficulty.easy}
+                        onChange={this.handleDifficultyChange} />
+                  <label htmlFor="easyDifficulty" className="radio__radio-label">
+                        <span className="radio__radio-button radio__radio-button--white"/>
+                        Easy
+                  </label>
+               </div>
 
-               <input 
-                  type="radio" 
-                  id="mediumDifficulty" 
-                  name="difficulty" 
-                  value={GameEngine.difficulty.medium}
-                  checked={difficulty === GameEngine.difficulty.medium}
-                  onChange={this.handleDifficultyChange} />
-               <label htmlFor="mediumDifficulty">Medium</label>
-               
-               <input 
-                  type="radio" 
-                  id="hardDifficulty" 
-                  name="difficulty" 
-                  value={GameEngine.difficulty.hard}
-                  checked={difficulty === GameEngine.difficulty.hard}
-                  onChange={this.handleDifficultyChange} />
-               <label htmlFor="hardDifficulty">Hard difficulty</label>
+               <div className="radio">
+                  <input 
+                        type="radio" 
+                        className="radio__radio-input"
+                        id="mediumDifficulty" 
+                        name="difficulty" 
+                        value={GameEngine.difficulty.medium}
+                        checked={difficulty === GameEngine.difficulty.medium}
+                        onChange={this.handleDifficultyChange} />
+                  <label htmlFor="mediumDifficulty" className="radio__radio-label">
+                        <span className="radio__radio-button radio__radio-button--white"/>
+                        Medium
+                  </label>
+               </div>
+
+               <div className="radio">
+                  <input 
+                        type="radio" 
+                        className="radio__radio-input"
+                        id="hardDifficulty" 
+                        name="difficulty" 
+                        value={GameEngine.difficulty.hard}
+                        checked={difficulty === GameEngine.difficulty.hard}
+                        onChange={this.handleDifficultyChange} />
+                  <label htmlFor="hardDifficulty" className="radio__radio-label">
+                        <span className="radio__radio-button radio__radio-button--white"/>
+                        Hard difficulty
+                  </label>
+               </div>
             </div>
             <div className="new-game-form__row">
                <div className="new-game-form__button">
