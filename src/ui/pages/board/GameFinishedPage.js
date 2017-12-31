@@ -5,11 +5,19 @@ import { Link } from 'react-router-dom';
 
 class GameFinishedPage extends PureComponent {
    static propTypes = {
+      history: React.PropTypes.object.isRequired,
       player: React.PropTypes.string.isRequired,
       difficulty: React.PropTypes.string.isRequired,
       time: React.PropTypes.number.isRequired,
       hints: React.PropTypes.number.isRequired,
-      finished: React.PropTypes.bool.isRequired
+      notStarted: React.PropTypes.bool.isRequired
+   }
+   
+   componentWillMount() {
+      const { history, notStarted } = this.props;
+
+      if (notStarted)
+         history.push("/new-game");
    }
 
    render() {
@@ -49,7 +57,7 @@ const mapStateToProps = state => ({
    difficulty: state.difficulty,
    time: state.time,
    hints: state.hints,
-   finished: state.finished
+   notStarted: !state.boardCells && !state.finished,
 });
 
 export default connect(mapStateToProps)(GameFinishedPage);
