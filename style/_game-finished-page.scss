@@ -1,0 +1,22 @@
+.game-finished-page {
+   padding-top: 10rem;
+
+   &__heading {
+      color: $theme-color-primary;
+      margin-bottom: 2rem;
+   }
+
+   &__par {
+      color: $theme-color-primary;
+   }
+
+   &__buttons {
+      margin-top: 2rem;
+   }
+
+   &__button {
+      &:not(:last-child) {
+         margin-right: 1rem;
+      }
+   }
+}

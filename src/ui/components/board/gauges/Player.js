@@ -6,7 +6,7 @@ const Player = ({ player }) => (
       <span className="gauge__icon">
          <i className="fas fa-user" />
       </span>
-      <span>{player && player.length > 0 ? player : "Anonymous player"}</span>
+      <span>{player}</span>
    </div>
 );
 

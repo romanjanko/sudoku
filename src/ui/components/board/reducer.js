@@ -20,7 +20,7 @@ export default function boardReducer(state = {}, action) {
          return {
             boardSize,
             boardCells,
-            player,
+            player: player && player.length > 0 ? player : "Anonymous player",
             difficulty,
             time: 0,
             hints: 0,
@@ -58,6 +58,8 @@ export default function boardReducer(state = {}, action) {
       case GAME_FINISHED_EVENT: {
          return {
             ...state,
+            boardSize: 0,
+            boardCells: null,
             finished: true
          };
       }

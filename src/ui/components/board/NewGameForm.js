@@ -107,7 +107,7 @@ export default class NewGameForm extends Component {
                </div>
                <div className="new-game-form__button">
                   <div className="button">
-                        <button type="submit" className="button__button">Start new game</button>
+                     <button type="submit" className="button__button">Start new game</button>
                   </div>
                </div>
             </div>
