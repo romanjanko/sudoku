@@ -3,10 +3,11 @@ import arrayShuffle from 'array-shuffle';
 import Board from '../boards/Board';
 import PlayerBoard from '../boards/PlayerBoard';
 import { getRowFromIndex, getColumnFromIndex } from '../boards/boardUtils';
+import GameEngine from '../GameEngine';
 
 export default class PlayerBoardCreator {
    createFromGeneratedGame(newGame, difficulty) {
-      const cellsToShow = this.determineCellsToShow(newGame.getBoardSize());
+      const cellsToShow = this.determineCellsToShow(newGame.getBoardSize(), difficulty);
       const tempBoard = new Board();
 
       cellsToShow.forEach(cellPosition => {
@@ -18,9 +19,23 @@ export default class PlayerBoardCreator {
       return new PlayerBoard(tempBoard, cellsToShow);
    }
 
-   determineCellsToShow(boardSize) {
+   determineCellsToShow(boardSize, difficulty) {
       const allPositions = this.getAllCellsPositions(boardSize);
-      return arrayShuffle(allPositions).slice(2);
+      const numberOfCells = this.getNumberOfCellsToShow(difficulty);
+      return arrayShuffle(allPositions).slice(0, numberOfCells);
+   }
+
+   getNumberOfCellsToShow(difficulty) {
+      switch (difficulty) {
+         case GameEngine.difficulty.easy:
+            return 79; //TODO 65;
+         case GameEngine.difficulty.medium:
+            return 55;
+         case GameEngine.difficulty.hard:
+            return 40;
+         default:
+            return 65;
+      }
    }
 
    getAllCellsPositions(boardSize) {
