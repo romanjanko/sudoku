@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux'
 import find from 'lodash/collection/find';
+import debounce from 'lodash/function/debounce';
 
-import { setCell, deleteCell } from './actions';
+import { setCell, deleteCell, selectCell, unselectCell } from './actions';
 
 class BoardCell extends Component {
    static propTypes = {
@@ -11,64 +12,75 @@ class BoardCell extends Component {
       column: React.PropTypes.number.isRequired,
       value: React.PropTypes.string.isRequired,
       readOnly: React.PropTypes.bool.isRequired,
+      isSelected: React.PropTypes.bool.isRequired,
       setCell: React.PropTypes.func.isRequired,
-      deleteCell: React.PropTypes.func.isRequired
+      deleteCell: React.PropTypes.func.isRequired,
+      selectCell: React.PropTypes.func.isRequired,
+      unselectCell: React.PropTypes.func.isRequired
    }
 
    constructor(props) {
       super(props);
 
-      this.state = {
-         value: props.value
-      };
-
       this.handleKeyDownEvent = this.handleKeyDownEvent.bind(this);
       this.handleBlurEvent = this.handleBlurEvent.bind(this);
+      this.handleFocusEvent = this.handleFocusEvent.bind(this);
+   }
+
+   handleFocusEvent(event) {
+      event.preventDefault();
+      const { readOnly, row, column, selectCell } = this.props;
+
+      if (!readOnly)
+         selectCell(row, column);
    }
 
    handleBlurEvent(event) {
       event.preventDefault();
-      const { row, column, setCell, deleteCell } = this.props;
-      const enteredValue = this.state.value;
+      const { readOnly, row, column, unselectCell } = this.props;
 
-      if (enteredValue)
-         setCell(row, column, Number(enteredValue));
-      else
-         deleteCell(row, column);
+      debounce(() => {
+         if (!readOnly)
+            unselectCell(row, column);
+      }, 100)(); //TODO better solution
    }
 
    handleKeyDownEvent(event) {
       event.preventDefault();
+      const { row, column, setCell, deleteCell } = this.props;
       const backspaceKeyCode = 8;
       const deleteKeyCode = 46;
       
       if (event.keyCode === backspaceKeyCode || event.keyCode === deleteKeyCode) {
-         this.setState({ value: "" });
+         deleteCell(row, column);
          return;
       }
       
       if (!/[0-9]/.test(event.key))
          return;
 
-      this.setState({ value: event.key });
+      setCell(row, column, Number(event.key));
    }
 
    render() {
-      const { readOnly, value } = this.props;
+      const { readOnly, value, isSelected } = this.props;
       let className = "board__cell ";
 
       if (readOnly)
          className += ` board__cell--${value}`;
+      else if (isSelected)
+         className += " board__cell--selected";
       else
          className += " board__cell--selectable";
 
       return (
          <input 
             type="text"
-            value={this.state.value}
+            value={value}
             readOnly={readOnly}
             className={className}
             onKeyDown={this.handleKeyDownEvent}
+            onFocus={this.handleFocusEvent}
             onBlur={this.handleBlurEvent} />
       );
    }
@@ -77,14 +89,17 @@ class BoardCell extends Component {
 const mapStateToProps = (state, ownProps) => {
    const cell = find(state.boardCells, 
       cell => cell.row === ownProps.row && cell.column === ownProps.column);
-
+   
    return {
       value: cell.value ? cell.value.toString() : "",
-      readOnly: cell.readOnly
+      readOnly: cell.readOnly,
+      isSelected: state.selectedBoardCell ? 
+         state.selectedBoardCell.row === cell.row && state.selectedBoardCell.column === cell.column :
+         false
    };
 };
 
 const mapDispatchToProps = dispatch =>
-   bindActionCreators({ setCell, deleteCell }, dispatch);
+   bindActionCreators({ setCell, deleteCell, selectCell, unselectCell }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(BoardCell);

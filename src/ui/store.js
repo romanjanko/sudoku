@@ -9,11 +9,12 @@ const gameEngine = new GameEngine();
 const initialState = {
    boardSize: 0,
    boardCells: null,
+   selectedBoardCell: null,
    player: null,
    difficulty: null,
    time: 0, // seconds that has elapsed since the game started
    hints: 0,
-   finished: false
+   finished: false,
 }
 
 const middleware = [

@@ -6,7 +6,9 @@ import {
    GAME_FINISHED_EVENT,
    GIVE_HINT_EVENT,
    START_NEW_GAME_EVENT,
-   INCREMENT_TIME_EVENT
+   INCREMENT_TIME_EVENT,
+   SELECT_CELL_EVENT,
+   UNSELECT_CELL_EVENT
 } from './actions';
 
 const findCellIndex = (cells, row, column) => 
@@ -20,6 +22,7 @@ export default function boardReducer(state = {}, action) {
          return {
             boardSize,
             boardCells,
+            selectedBoardCell: null,
             player: player && player.length > 0 ? player : "Anonymous player",
             difficulty,
             time: 0,
@@ -75,6 +78,25 @@ export default function boardReducer(state = {}, action) {
             time: state.time + 1
          };
       }
+      case SELECT_CELL_EVENT: {
+         const { row, column } = action;
+
+         return {
+            ...state,
+            selectedBoardCell: { row, column }
+         };
+      }
+      case UNSELECT_CELL_EVENT: {
+         const { row, column } = action;
+
+         if (state.selectedBoardCell.row === row && state.selectedBoardCell.column === column) {
+            return {
+               ...state,
+               selectedBoardCell: null
+            };
+         }
+      }
    }
+
    return state;
 }

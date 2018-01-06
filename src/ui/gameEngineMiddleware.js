@@ -5,6 +5,7 @@ import {
    GIVE_HINT_EVENT,
    SET_CELL_EVENT, 
    DELETE_CELL_EVENT,
+   selectCell,
    gameFinished,
    setCell,
    startNewGame
@@ -27,10 +28,16 @@ const gameEngineMiddleware = gameEngine => store => next => action => {
       case GIVE_HINT_EVENT: {
          if (!game) return;
 
+         next(action);
+
          const { row, column } = action;
          const value = game.hint(row, column);
          store.dispatch(setCell(row, column, value));
-         break;
+         
+         // debounce(() => {
+         //    store.dispatch(selectCell(row, column));
+         // }, 200)();
+         return;
       }
       case SET_CELL_EVENT: {
          if (!game) return;

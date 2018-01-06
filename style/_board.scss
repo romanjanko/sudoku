@@ -36,12 +36,12 @@ $board-size: 54.32rem;
 
       &--selectable {
          cursor: pointer;
+      }
 
-         &:focus {
-            color: transparent;
-            text-shadow: 0 0 0 $board-color-white;
-            border: .4rem dashed $board-color-black;
-         }
+      &--selected {
+         color: transparent;
+         text-shadow: 0 0 0 $board-color-white;
+         border: .4rem dashed $board-color-black;
       }
 
       &--1 { background-color: $board-color-green-blue; }
