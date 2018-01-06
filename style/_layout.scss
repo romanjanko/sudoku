@@ -7,6 +7,7 @@
       position: relative;
       border-radius: .3rem;
       min-height: 68.5rem; //TODO
+      height: calc(100vh - 6rem); //TODO
    
       &--secondary-color {
          background-color: $theme-color-secondary;
