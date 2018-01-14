@@ -1,6 +1,19 @@
 .main-heading {
    font-size: 8rem;
    text-transform: uppercase;
+
+   @media screen and (max-width: 900px) {
+      font-size: 6rem;
+   }
+
+   @media screen and (max-width: 700px) {
+      text-align: left;
+   }
+
+   @media screen and (max-width: 460px) {
+      font-size: 5rem;
+      text-align: center;
+   }
    
    &__letter {
       display: inline-block;
@@ -9,9 +22,25 @@
       line-height: 11rem;
       color: $main-heading-color-white;
       text-align: center;
+      
+      @media screen and (max-width: 900px) {
+         width: 8rem;
+         height: 8rem;
+         line-height: 9rem;
+      }
+      
+      @media screen and (max-width: 400px) {
+         width: 7rem;
+         height: 7rem;
+         line-height: 8rem;
+      }
 
       &:not(:last-child) {
          margin-right: 2rem;
+
+         @media screen and (max-width: 900px) {
+            margin-right: .3rem;
+         }
       }
 
       &--circle {

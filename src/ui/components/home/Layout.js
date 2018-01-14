@@ -10,13 +10,12 @@ const Layout = ({
    return (
       <div className="layout">
          <div className={defaultBackgroundOn ? 
-            "layout__background" : "layout__background layout__background--secondary-color"} 
-         >
-            <div className="layout__heading">
-               {renderMainHeading}
-            </div>
+            "layout__background" : "layout__background layout__background--secondary-color"}>
             <div className="layout__button">
                {renderMainMenuButton}
+            </div>
+            <div className="layout__heading">
+               {renderMainHeading}
             </div>
             <div className="layout__content">
                {children}

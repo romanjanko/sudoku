@@ -26,7 +26,15 @@
 
    &__page {
       display: inline-block;
-      width: 40%; //TODO
+      width: 40%;
+
+      @media screen and (max-width: 900px) {
+         width: 60%;
+      }
+
+      @media screen and (max-width: 600px) {
+         width: 90%;
+      }
    }
 
    &__list {

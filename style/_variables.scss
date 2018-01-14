@@ -24,3 +24,17 @@ $board-color-red-dark: #A05455;
 $board-color-yellow-dark: #F9D18C;
 $board-color-white: #FFFFFF;
 $board-color-black: #353535;
+
+/*
+ Media queries breakpoints:
+   < 600px = phone
+   600px - 900px = tablet portrait
+   900px - 1200px = tablet landscape
+   > 1200px = desktop
+
+ conversion: 1em = 16px
+ TODO
+*/
+// $phone-break: 37.5em;
+// $tablet-portrait-break: 56.25em;
+// $tablet-landscape-break: 75em;

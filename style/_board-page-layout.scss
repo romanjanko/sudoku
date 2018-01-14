@@ -1,31 +1,69 @@
-$side-panel-width: 40rem;
+$side-panel-width: 28rem;
 
 .board-page-layout {
-   display: inline-block;
-   // background-color: red;
-   position: relative;
+   display: flex;
+   flex-wrap: wrap;
    font-size: 2rem;
    
-   &__left {
-      position: absolute;
-      top: 0;
-      left: -$side-panel-width;
-      width: $side-panel-width;
-
-      // background-color: blue;
+   @media screen and (max-width: 900px) {
+      flex-direction: column;
+      align-items: center;
+   }
+   
+   &__buttons {
+      margin-left: auto;
       text-align: right;
       padding: 0 3rem;
-   }
-
-   &__right {
-      position: absolute;
-      top: 0;
-      right: -$side-panel-width;
       width: $side-panel-width;
 
-      // background-color: yellow;
+      //TODO px, em or rem?
+      @media screen and (max-width: 1200px) {
+         text-align: left;
+      }
+      
+      @media screen and (max-width: 900px) {
+         margin-left: 0;
+         width: $board-size;
+         display: flex;
+         padding: 0;
+      }
+      
+      @media screen and (max-width: 400px) {
+         width: 42.5rem; //TODO
+         padding: 0;
+      }
+   }
+
+   &__board {
+      @media screen and (max-width: 1200px) {
+         margin-left: auto;
+      }
+      
+      @media screen and (max-width: 900px) {
+         margin-left: 0;
+      }
+   }
+
+   &__buttons-and-gauges {
+      margin-right: auto;
+   }
+
+   &__gauges {
+      margin-right: auto;
+      width: $side-panel-width;
       text-align: left;
       padding: 0 3rem;
+
+      @media screen and (max-width: 900px) {
+         margin-right: 0;
+         width: $board-size;
+         padding: 0;
+      }
+      
+      @media screen and (max-width: 400px) {
+         width: 42.5rem; //TODO
+         padding: 0;
+      }
    }
 
    &__line {
@@ -35,6 +73,12 @@ $side-panel-width: 40rem;
       &--gauge {
          margin-bottom: 1.5rem;
          position: relative;
+      }
+
+      @media screen and (max-width: 900px) {
+         &--button {
+            margin-right: 1.5rem;
+         }
       }
    }
 

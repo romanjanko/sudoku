@@ -26,12 +26,8 @@ class NewGamePage extends Component {
 
    render() {
       return (
-         <div className="board-page-layout">
-            <div className="board">
-               <div className="new-game-page">
-                  <NewGameForm onSubmit={this.handleNewGameFormSubmit} />
-               </div>
-            </div>
+         <div className="new-game-page">
+            <NewGameForm onSubmit={this.handleNewGameFormSubmit} />
          </div>
       );
    }

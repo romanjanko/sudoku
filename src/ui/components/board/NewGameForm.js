@@ -66,7 +66,7 @@ export default class NewGameForm extends Component {
                         checked={difficulty === GameEngine.difficulty.easy}
                         onChange={this.handleDifficultyChange} />
                   <label htmlFor="easyDifficulty" className="radio__radio-label">
-                        <span className="radio__radio-button radio__radio-button--white"/>
+                        <span className="radio__radio-button radio__radio-button"/>
                         Easy
                   </label>
                </div>
@@ -81,7 +81,7 @@ export default class NewGameForm extends Component {
                         checked={difficulty === GameEngine.difficulty.medium}
                         onChange={this.handleDifficultyChange} />
                   <label htmlFor="mediumDifficulty" className="radio__radio-label">
-                        <span className="radio__radio-button radio__radio-button--white"/>
+                        <span className="radio__radio-button radio__radio-button"/>
                         Medium
                   </label>
                </div>
@@ -96,7 +96,7 @@ export default class NewGameForm extends Component {
                         checked={difficulty === GameEngine.difficulty.hard}
                         onChange={this.handleDifficultyChange} />
                   <label htmlFor="hardDifficulty" className="radio__radio-label">
-                        <span className="radio__radio-button radio__radio-button--white"/>
+                        <span className="radio__radio-button radio__radio-button"/>
                         Hard difficulty
                   </label>
                </div>

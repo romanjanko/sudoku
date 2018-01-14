@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import Media from "react-media"
 
 import Board from '../../components/board/Board';
 import NewGameButton from '../../components/board/buttons/NewGameButton';
@@ -33,37 +34,73 @@ class MainBoardPage extends Component {
          history.push("/game-finished");
    }
 
-   render() {
+   renderButtons() {
       return (
-         <div className="board-page-layout">
-            <div className="board-page-layout__left">
-               <div className="board-page-layout__line">
-                  <NewGameButton />
-               </div>
-               <div className="board-page-layout__line">
-                  <PauseButton />
-               </div>
+         <div className="board-page-layout__buttons">
+            <div className="board-page-layout__item board-page-layout__line--button">
+               <NewGameButton />
             </div>
+            <div className="board-page-layout__line board-page-layout__line--button">
+               <PauseButton />
+            </div>
+         </div>
+      );
+   }
+
+   renderBoard() {
+      return (
+         <div className="board-page-layout__board">
             <div className="board">
                <Board />
             </div>
-            <div className="board-page-layout__right">
-               <div className="board-page-layout__line board-page-layout__line--gauge">
-                  <Player />
-               </div>
-               <div className="board-page-layout__line board-page-layout__line--gauge">
-                  <Time />
-               </div>
-               <div className="board-page-layout__line board-page-layout__line--gauge">
-                  <Difficulty />
-               </div>
-               <div className="board-page-layout__line board-page-layout__line--gauge">
-                  <Hints />
-                  <div className="board-page-layout__hint-button">
-                     <HintButton />
-                  </div>
-               </div>
+         </div>
+      );
+   }
+
+   renderGauges() {
+      return (
+         <div className="board-page-layout__gauges">
+            <div className="board-page-layout__line board-page-layout__line--gauge">
+               <Player />
             </div>
+            <div className="board-page-layout__line board-page-layout__line--gauge">
+               <Time />
+            </div>
+            <div className="board-page-layout__line board-page-layout__line--gauge">
+               <Difficulty />
+            </div>
+            <div className="board-page-layout__line board-page-layout__line--gauge">
+               <Hints />
+            </div>
+            <div className="board-page-layout__hint-button">
+               <HintButton />
+            </div>
+         </div>
+      );
+   }
+
+   render() {
+      return (
+         <div>
+            <Media query={{ minWidth: 901, maxWidth: 1200 }}>
+               {matches =>
+                  matches ? (
+                     <div className="board-page-layout">
+                        {this.renderBoard()}
+                        <div className="board-page-layout__buttons-and-gauges">
+                           {this.renderButtons()}
+                           {this.renderGauges()}
+                        </div>
+                     </div>
+                  ) : (
+                     <div className="board-page-layout">
+                        {this.renderButtons()}
+                        {this.renderBoard()}
+                        {this.renderGauges()}
+                     </div>
+                  )
+               }
+            </Media>
          </div>
       );
    }

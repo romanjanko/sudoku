@@ -1,5 +1,4 @@
 .new-game-form {
-   color: $theme-color-primary;
    font-size: 2rem;
 
    &__row {
@@ -12,8 +11,8 @@
 
    &__text-input {
       background-color: inherit;
-      color: $theme-color-primary;
-      border: .2rem solid $theme-color-primary;
+      color: $theme-color-tertiary;
+      border: .2rem solid $theme-color-tertiary;
       border-radius: .5rem;
       font-size: inherit;
       font-family: inherit;
@@ -21,7 +20,7 @@
       outline: none;
 
       &::selection {
-         background-color: $theme-color-tertiary;
+         background-color: $theme-color-secondary;
       }
    }
 

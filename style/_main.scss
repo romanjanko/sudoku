@@ -7,6 +7,14 @@
 html {
    font-size: 62.5%; // 10/16 = 0.625 => 1rem is equal to 10px (16px is default browser's font size)
    font-family: Comfortaa;
+
+   @media screen and (max-width: 1200px) {
+      font-size: 58%;
+   }
+
+   @media screen and (max-width: 600px) {
+      font-size: 45%;
+   }
 }
 
 body {
