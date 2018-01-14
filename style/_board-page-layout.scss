@@ -73,6 +73,7 @@ $side-panel-width: 28rem;
       &--gauge {
          margin-bottom: 1.5rem;
          position: relative;
+         white-space: nowrap;
       }
 
       @media screen and (max-width: 900px) {
