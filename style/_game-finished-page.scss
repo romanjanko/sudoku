@@ -1,17 +1,18 @@
 .game-finished-page {
-   padding-top: 10rem;
+   padding-top: 5rem;
+   font-size: 2rem;
+   color: $theme-color-tertiary;
 
    &__heading {
-      color: $theme-color-primary;
       margin-bottom: 2rem;
    }
 
-   &__par {
-      color: $theme-color-primary;
+   &__text {
+      margin-bottom: 2rem;
    }
 
    &__buttons {
-      margin-top: 2rem;
+      // margin-top: 2rem;
    }
 
    &__button {
