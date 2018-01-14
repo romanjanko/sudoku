@@ -1,11 +1,13 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import { Route } from 'react-router-dom';
 import Media from "react-media"
 
 import Board from '../../components/board/Board';
 import NewGameButton from '../../components/board/buttons/NewGameButton';
 import PauseButton from '../../components/board/buttons/PauseButton';
 import HintButton from '../../components/board/buttons/HintButton';
+import ContinueButton from '../../components/board/buttons/ContinueButton';
 
 import Difficulty from '../../components/board/gauges/Difficulty';
 import Hints from '../../components/board/gauges/Hints';
@@ -15,6 +17,7 @@ import Time from '../../components/board/gauges/Time';
 class MainBoardPage extends Component {
    static propTypes = {
       history: React.PropTypes.object.isRequired,
+      match: React.PropTypes.object.isRequired,
       notStarted: React.PropTypes.bool.isRequired,
       finished: React.PropTypes.bool.isRequired
    }
@@ -57,6 +60,23 @@ class MainBoardPage extends Component {
       );
    }
 
+   renderGamePausedPage() {
+      return (
+         <div className="board-page-layout__board">
+            <div className="board">
+               <div className="game-paused-page">
+                  <div className="game-paused-page__text">
+                     Your game is paused right now.
+                  </div>
+                  <div className="game-paused-page__button">
+                     <ContinueButton />
+                  </div>
+               </div>
+            </div>
+         </div>
+      );
+   }
+
    renderGauges() {
       return (
          <div className="board-page-layout__gauges">
@@ -86,16 +106,20 @@ class MainBoardPage extends Component {
                {matches =>
                   matches ? (
                      <div className="board-page-layout">
-                        {this.renderBoard()}
+                        <Route exact path="/" render={() => this.renderBoard()} />
+                        <Route path="/game-paused" render={() => this.renderGamePausedPage()} />
                         <div className="board-page-layout__buttons-and-gauges">
-                           {this.renderButtons()}
+                           <Route exact path="/" render={() => this.renderButtons()} />
                            {this.renderGauges()}
                         </div>
                      </div>
                   ) : (
                      <div className="board-page-layout">
-                        {this.renderButtons()}
-                        {this.renderBoard()}
+                        <Route exact path="/" render={() => this.renderButtons()} />
+                        <Route path="/game-paused" render={() => 
+                           <div className="board-page-layout__buttons" />} />
+                        <Route exact path="/" render={() => this.renderBoard()} />
+                        <Route path="/game-paused" render={() => this.renderGamePausedPage()} />
                         {this.renderGauges()}
                      </div>
                   )

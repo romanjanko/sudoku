@@ -11,13 +11,13 @@ const MainMenuPage = ({ match }) => (
       <Switch>
          <Route exact path={match.url} render={() => (
             <ul className="main-menu__list">
-               <li className="main-menu__item">
+               {/*<li className="main-menu__item">
                   <div className="button">
                      <Link className="button__link button__link--large" to={`${match.url}/settings`}>
                         Settings
                      </Link>
                   </div>
-               </li>
+               </li>*/}
                <li className="main-menu__item">
                   <div className="button">
                      <Link className="button__link button__link--large" to={`${match.url}/leaderboard`}>

@@ -37,7 +37,7 @@ class App extends Component {
                <Route exact path="/" component={MainBoardPage} />
                <Route path="/new-game" component={NewGamePage} />
                <Route path="/game-finished" component={GameFinishedPage} />
-               <Route path="/game-paused" component={GamePausedPage} />
+               <Route path="/game-paused" component={MainBoardPage} />
                <Route path="/menu" component={MainMenuPage} />
                <Route path="*" component={NotFoundPage} />
             </Switch>
