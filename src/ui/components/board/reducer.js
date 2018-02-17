@@ -8,7 +8,8 @@ import {
    START_NEW_GAME_EVENT,
    INCREMENT_TIME_EVENT,
    SELECT_CELL_EVENT,
-   UNSELECT_CELL_EVENT
+   UNSELECT_CELL_EVENT,
+   DISABLE_HINT_FOR_UNSELECTED_CELL_EVENT
 } from './actions';
 
 const findCellIndex = (cells, row, column) => 
@@ -26,7 +27,10 @@ export default function boardReducer(state = {}, action) {
             player: player && player.length > 0 ? player : "Anonymous player",
             difficulty,
             time: 0,
-            hints: 0,
+            hints: {
+               counter: 0,
+               activatedByBoardCell: null
+            },
             finished: false
          };
       }
@@ -69,7 +73,10 @@ export default function boardReducer(state = {}, action) {
       case GIVE_HINT_EVENT: {
          return {
             ...state,
-            hints: state.hints + 1
+            hints: {
+               ...state.hints,
+               counter: state.hints.counter + 1
+            }
          };
       }
       case INCREMENT_TIME_EVENT: {
@@ -83,7 +90,11 @@ export default function boardReducer(state = {}, action) {
 
          return {
             ...state,
-            selectedBoardCell: { row, column }
+            selectedBoardCell: { row, column },
+            hints: {
+               ...state.hints,
+               activatedByBoardCell: { row, column }
+            }
          };
       }
       case UNSELECT_CELL_EVENT: {
@@ -93,6 +104,20 @@ export default function boardReducer(state = {}, action) {
             return {
                ...state,
                selectedBoardCell: null
+            };
+         }
+      }
+      case DISABLE_HINT_FOR_UNSELECTED_CELL_EVENT: {
+         const { row, column } = action;
+         const currentCell = state.hints.activatedByBoardCell;
+
+         if (currentCell.row === row && currentCell.column === column) {
+            return {
+               ...state,
+               hints: {
+                  ...state.hints,
+                  activatedByBoardCell: null
+               }
             };
          }
       }

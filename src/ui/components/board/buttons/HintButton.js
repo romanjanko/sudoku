@@ -7,11 +7,16 @@ import { giveHint } from '../actions';
 
 class HintButton extends Component {
    static propTypes = {
-      selectedBoardCell: React.PropTypes.shape({
+      enabled: React.PropTypes.bool,
+      activatedByBoardCell: React.PropTypes.shape({
          row: React.PropTypes.number.isRequired,
          column: React.PropTypes.number.isRequired
       }),
       giveHint: React.PropTypes.func.isRequired
+   }
+
+   static defaultProps = {
+      enabled: true
    }
 
    constructor(props) {
@@ -21,18 +26,18 @@ class HintButton extends Component {
 
    handleClick(event) {
       event.preventDefault();
-      const { selectedBoardCell } = this.props;
+      const { activatedByBoardCell } = this.props;
 
-      if (selectedBoardCell) {
-         const { row, column } = selectedBoardCell;
+      if (activatedByBoardCell) {
+         const { row, column } = activatedByBoardCell;
          this.props.giveHint(row, column);
       }
    }
 
    render() {
-      const { selectedBoardCell } = this.props;
+      const { enabled } = this.props;
 
-      if (!selectedBoardCell)
+      if (!enabled)
          return null;
 
       return (
@@ -44,7 +49,8 @@ class HintButton extends Component {
 }
 
 const mapStateToProps = state => ({
-   selectedBoardCell: state.selectedBoardCell
+   activatedByBoardCell: state.hints.activatedByBoardCell,
+   enabled: state.hints.activatedByBoardCell !== null
 });
 
 const mapDispatchToProps = dispatch =>

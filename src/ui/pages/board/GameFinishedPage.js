@@ -54,7 +54,7 @@ const mapStateToProps = state => ({
    player: state.player,
    difficulty: state.difficulty,
    time: state.time,
-   hints: state.hints,
+   hints: state.hints.counter,
    notStarted: !state.boardCells && !state.finished,
 });
 

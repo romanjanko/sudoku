@@ -18,7 +18,7 @@ Hints.propTypes = {
 };
 
 const mapStateToProps = state => ({
-   hints: state.hints
+   hints: state.hints.counter
 });
 
 export default connect(mapStateToProps)(Hints);

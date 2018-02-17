@@ -5,6 +5,7 @@ export const START_NEW_GAME_EVENT = 'START_NEW_GAME_EVENT';
 export const GAME_FINISHED_EVENT = 'GAME_FINISHED_EVENT';
 
 export const GIVE_HINT_EVENT = 'GIVE_HINT_EVENT';
+export const DISABLE_HINT_FOR_UNSELECTED_CELL_EVENT = 'DISABLE_HINT_FOR_UNSELECTED_CELL_EVENT';
 export const SELECT_CELL_EVENT = 'SELECT_CELL_EVENT';
 export const UNSELECT_CELL_EVENT = 'UNSELECT_CELL_EVENT';
 export const SET_CELL_EVENT = 'SET_CELL_EVENT';
@@ -36,7 +37,13 @@ export const gameFinished = (player, difficulty, time, hints) => ({
 
 export const giveHint = (row, column) => ({
    type: GIVE_HINT_EVENT,
-   row, 
+   row,
+   column
+});
+
+export const disableHintForUnselectedCell = (row, column) => ({
+   type: DISABLE_HINT_FOR_UNSELECTED_CELL_EVENT,
+   row,
    column
 });
 

@@ -14,7 +14,7 @@ import {
 let game = null;
 
 const gameEngineMiddleware = gameEngine => store => next => action => {
-   console.log("gameEngineMiddleware", action);
+   // console.log("gameEngineMiddleware", action);
 
    switch(action.type) {
       case NEW_GAME_EVENT: {
@@ -33,10 +33,7 @@ const gameEngineMiddleware = gameEngine => store => next => action => {
          const { row, column } = action;
          const value = game.hint(row, column);
          store.dispatch(setCell(row, column, value));
-         
-         // debounce(() => {
-         //    store.dispatch(selectCell(row, column));
-         // }, 200)();
+
          return;
       }
       case SET_CELL_EVENT: {

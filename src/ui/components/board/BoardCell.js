@@ -4,7 +4,8 @@ import { bindActionCreators } from 'redux'
 import find from 'lodash/collection/find';
 import debounce from 'lodash/function/debounce';
 
-import { setCell, deleteCell, selectCell, unselectCell } from './actions';
+import { setCell, deleteCell, selectCell, 
+   unselectCell, disableHintForUnselectedCell } from './actions';
 
 class BoardCell extends Component {
    static propTypes = {
@@ -37,12 +38,15 @@ class BoardCell extends Component {
 
    handleBlurEvent(event) {
       event.preventDefault();
-      const { readOnly, row, column, unselectCell } = this.props;
+      const { readOnly, row, column, unselectCell, disableHintForUnselectedCell } = this.props;
+
+      if (!readOnly)
+         unselectCell(row, column);
 
       debounce(() => {
          if (!readOnly)
-            unselectCell(row, column);
-      }, 100)(); //TODO better solution
+            disableHintForUnselectedCell(row, column);
+      }, 200)();
    }
 
    handleKeyDownEvent(event) {
@@ -100,6 +104,7 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = dispatch =>
-   bindActionCreators({ setCell, deleteCell, selectCell, unselectCell }, dispatch);
+   bindActionCreators({ setCell, deleteCell, selectCell, 
+      unselectCell, disableHintForUnselectedCell }, dispatch);
 
 export default connect(mapStateToProps, mapDispatchToProps)(BoardCell);

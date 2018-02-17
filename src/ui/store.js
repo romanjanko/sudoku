@@ -13,7 +13,10 @@ const initialState = {
    player: null,
    difficulty: null,
    time: 0, // seconds that has elapsed since the game started
-   hints: 0,
+   hints: {
+      counter: 0,
+      activatedByBoardCell: null
+   },
    finished: false,
 }
 
