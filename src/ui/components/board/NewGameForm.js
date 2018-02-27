@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import GameEngine from '../../../core/GameEngine';
+import Game from '../../../core/Game';
 import BackButton from './buttons/BackButton';
 
 export default class NewGameForm extends Component {
@@ -12,7 +12,7 @@ export default class NewGameForm extends Component {
 
       this.state = {
          player: "",
-         difficulty: GameEngine.difficulty.easy
+         difficulty: Game.difficulty.easy
       };
 
       this.handlePlayerChange = this.handlePlayerChange.bind(this);
@@ -62,8 +62,8 @@ export default class NewGameForm extends Component {
                         className="radio__radio-input"
                         id="easyDifficulty" 
                         name="difficulty" 
-                        value={GameEngine.difficulty.easy}
-                        checked={difficulty === GameEngine.difficulty.easy}
+                        value={Game.difficulty.easy}
+                        checked={difficulty === Game.difficulty.easy}
                         onChange={this.handleDifficultyChange} />
                   <label htmlFor="easyDifficulty" className="radio__radio-label">
                         <span className="radio__radio-button radio__radio-button"/>
@@ -77,8 +77,8 @@ export default class NewGameForm extends Component {
                         className="radio__radio-input"
                         id="mediumDifficulty" 
                         name="difficulty" 
-                        value={GameEngine.difficulty.medium}
-                        checked={difficulty === GameEngine.difficulty.medium}
+                        value={Game.difficulty.medium}
+                        checked={difficulty === Game.difficulty.medium}
                         onChange={this.handleDifficultyChange} />
                   <label htmlFor="mediumDifficulty" className="radio__radio-label">
                         <span className="radio__radio-button radio__radio-button"/>
@@ -92,8 +92,8 @@ export default class NewGameForm extends Component {
                         className="radio__radio-input"
                         id="hardDifficulty" 
                         name="difficulty" 
-                        value={GameEngine.difficulty.hard}
-                        checked={difficulty === GameEngine.difficulty.hard}
+                        value={Game.difficulty.hard}
+                        checked={difficulty === Game.difficulty.hard}
                         onChange={this.handleDifficultyChange} />
                   <label htmlFor="hardDifficulty" className="radio__radio-label">
                         <span className="radio__radio-button radio__radio-button"/>

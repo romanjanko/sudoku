@@ -8,12 +8,6 @@ export default class GameEngine {
       this.newGameGenerator = new NewGameGenerator();
       this.playerBoardCreator = new PlayerBoardCreator();
    }
-
-   static difficulty = {
-      easy: "easy",
-      medium: "medium",
-      hard: "hard"
-   };
    
    newGame(gameDifficulty) {
       const solutionBoard = this.newGameGenerator.generateGame();

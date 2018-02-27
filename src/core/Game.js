@@ -1,6 +1,12 @@
 import { areBoardsEqual } from './boards/boardUtils';
 
 export default class Game {
+   static difficulty = {
+      easy: "easy",
+      medium: "medium",
+      hard: "hard"
+   };
+
    constructor(gameDifficulty, solutionBoard, playerBoard) {
       this.gameDifficulty = gameDifficulty;
       this.solutionBoard = solutionBoard;

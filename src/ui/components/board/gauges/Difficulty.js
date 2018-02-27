@@ -1,16 +1,16 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import GameEngine from '../../../../core/GameEngine';
+import Game from '../../../../core/Game';
 
 const Difficulty = ({ difficulty }) => (
    <div className="gauge">
       <span className="gauge__icon">
          <i className="fas fa-signal" />
       </span>
-      {difficulty === GameEngine.difficulty.easy && <span>Easy</span>}
-      {difficulty === GameEngine.difficulty.medium && <span>Medium</span>}
-      {difficulty === GameEngine.difficulty.hard && <span>Hard</span>}
+      {difficulty === Game.difficulty.easy && <span>Easy</span>}
+      {difficulty === Game.difficulty.medium && <span>Medium</span>}
+      {difficulty === Game.difficulty.hard && <span>Hard</span>}
    </div>
 );
 

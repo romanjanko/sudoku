@@ -3,7 +3,7 @@ import arrayShuffle from 'array-shuffle';
 import Board from '../boards/Board';
 import PlayerBoard from '../boards/PlayerBoard';
 import { getRowFromIndex, getColumnFromIndex } from '../boards/boardUtils';
-import GameEngine from '../GameEngine';
+import Game from '../Game';
 
 export default class PlayerBoardCreator {
    createFromGeneratedGame(newGame, difficulty) {
@@ -27,11 +27,11 @@ export default class PlayerBoardCreator {
 
    getNumberOfCellsToShow(difficulty) {
       switch (difficulty) {
-         case GameEngine.difficulty.easy:
+         case Game.difficulty.easy:
             return 79; //TODO 65;
-         case GameEngine.difficulty.medium:
+         case Game.difficulty.medium:
             return 55;
-         case GameEngine.difficulty.hard:
+         case Game.difficulty.hard:
             return 40;
          default:
             return 65;

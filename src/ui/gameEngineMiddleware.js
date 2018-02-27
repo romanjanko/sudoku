@@ -8,7 +8,8 @@ import {
    selectCell,
    gameFinished,
    setCell,
-   startNewGame
+   startNewGame,
+   GAME_FINISHED_EVENT
 } from './components/board/actions';
 
 let game = null;
@@ -52,6 +53,10 @@ const gameEngineMiddleware = gameEngine => store => next => action => {
          game.deletePlayerBoardCell(row, column);
          break;
       }
+      // case GAME_FINISHED_EVENT: {
+         
+      //    break;
+      // }
    }
 
    return next(action);
