@@ -11,10 +11,11 @@ import {
    startNewGame,
    GAME_FINISHED_EVENT
 } from './components/board/actions';
+import GameResult from '../core/GameResult';
 
 let game = null;
 
-const gameEngineMiddleware = gameEngine => store => next => action => {
+const gameEngineMiddleware = (gameEngine, leaderboardService) => store => next => action => {
    // console.log("gameEngineMiddleware", action);
 
    switch(action.type) {
@@ -53,10 +54,11 @@ const gameEngineMiddleware = gameEngine => store => next => action => {
          game.deletePlayerBoardCell(row, column);
          break;
       }
-      // case GAME_FINISHED_EVENT: {
-         
-      //    break;
-      // }
+      case GAME_FINISHED_EVENT: {
+         const { player, difficulty, time, hints } = store.getState();
+         const res = leaderboardService.tryAddResult(new GameResult(player, difficulty, time, hints.counter));
+         break;
+      }
    }
 
    return next(action);

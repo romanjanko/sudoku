@@ -35,10 +35,17 @@ export default class LeaderboardService {
 
    tryAddResult(newGameResult) {
       // TODO handle different players with same results
-      const bestForCurrentDifficulty = this.results[newGameResult.difficulty] || [];
+      const bestForCurrentDifficulty = this.bestResults[newGameResult.difficulty] || [];
       const newBestForCurrentDifficulty = [];
+      let place = 0;
+      let added = false;
 
       for (let i = 0; i < bestForCurrentDifficulty.length; i++) {
+         if (added) {
+            newBestForCurrentDifficulty.push(bestForCurrentDifficulty[i]);
+            continue;
+         }
+
          const tempGameResult = bestForCurrentDifficulty[i][0];
 
          if (!tempGameResult)
@@ -47,23 +54,33 @@ export default class LeaderboardService {
          const comp = newGameResult.compare(tempGameResult);
 
          if (comp < 0) {
+            added = true;
+            place = i + 1;
             newBestForCurrentDifficulty.push([newGameResult]);
             newBestForCurrentDifficulty.push(bestForCurrentDifficulty[i]);
-            break;
          }
          else if (comp === 0) {
+            added = true;
+            place = i + 1;
             newBestForCurrentDifficulty.push([...bestForCurrentDifficulty[i], newGameResult]);
-            break;
          }
          else {
             newBestForCurrentDifficulty.push(bestForCurrentDifficulty[i]);
          }
       }
-      
-      if (newBestForCurrentDifficulty.length === 0)
+
+      if (!added) {
+         added = true;
+         place = newBestForCurrentDifficulty.length + 1;
          newBestForCurrentDifficulty.push([newGameResult]);
+      }
       
-      this.results[newGameResult.difficulty] = newBestForCurrentDifficulty.slice(0, this.limit);
-      this.saveBestResults(this.results);
+      this.bestResults[newGameResult.difficulty] = newBestForCurrentDifficulty.slice(0, this.limit);
+      this.saveBestResults(this.bestResults);
+
+      return {
+         place: 0 < place && place <= this.limit ? place : null,
+         leaderboard: this.bestResults
+      };
    }
 }

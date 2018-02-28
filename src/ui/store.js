@@ -3,8 +3,10 @@ import { createStore, applyMiddleware } from 'redux';
 import boardReducer from './components/board/reducer';
 import GameEngine from '../core/GameEngine';
 import gameEngineMiddleware from './gameEngineMiddleware';
+import LeaderboardService from '../core/LeaderboardService';
 
 const gameEngine = new GameEngine();
+const leaderboardService = new LeaderboardService();
 
 const initialState = {
    boardSize: 0,
@@ -18,10 +20,11 @@ const initialState = {
       activatedByBoardCell: null
    },
    finished: false,
+   leaderboard: leaderboardService.getBestResults()
 }
 
 const middleware = [
-   gameEngineMiddleware(gameEngine)
+   gameEngineMiddleware(gameEngine, leaderboardService)
 ]
 
 export default createStore(
