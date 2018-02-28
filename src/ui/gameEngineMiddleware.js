@@ -43,8 +43,13 @@ const gameEngineMiddleware = (gameEngine, leaderboardService) => store => next =
 
          const { row, column, value } = action;
          game.setPlayerBoardCell(row, column, value);
-         if (game.isGameSuccessfullySolved())
-            store.dispatch(gameFinished());
+
+         if (game.isGameSuccessfullySolved()) {
+            const { player, difficulty, time, hints } = store.getState();
+            const res = leaderboardService.tryAddResult(
+               new GameResult(player, difficulty, time, hints.counter));
+            store.dispatch(gameFinished(res.place));
+         }
          break;
       }
       case DELETE_CELL_EVENT: {
@@ -55,8 +60,6 @@ const gameEngineMiddleware = (gameEngine, leaderboardService) => store => next =
          break;
       }
       case GAME_FINISHED_EVENT: {
-         const { player, difficulty, time, hints } = store.getState();
-         const res = leaderboardService.tryAddResult(new GameResult(player, difficulty, time, hints.counter));
          break;
       }
    }

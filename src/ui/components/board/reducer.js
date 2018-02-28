@@ -31,7 +31,8 @@ export default function boardReducer(state = {}, action) {
                counter: 0,
                activatedByBoardCell: null
             },
-            finished: false
+            finished: false,
+            place: null
          };
       }
       case SET_CELL_EVENT: {
@@ -63,11 +64,13 @@ export default function boardReducer(state = {}, action) {
          };
       }
       case GAME_FINISHED_EVENT: {
+         const { place } = action;
          return {
             ...state,
             boardSize: 0,
             boardCells: null,
-            finished: true
+            finished: true,
+            place
          };
       }
       case GIVE_HINT_EVENT: {

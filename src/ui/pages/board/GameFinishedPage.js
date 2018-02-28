@@ -21,7 +21,7 @@ class GameFinishedPage extends PureComponent {
    }
 
    render() {
-      const { player, difficulty, time, hints } = this.props;
+      const { player, difficulty, time, hints, place } = this.props;
 
       return (
          <div className="game-finished-page">
@@ -37,6 +37,15 @@ class GameFinishedPage extends PureComponent {
                .
                The game difficulty was {difficulty}.
             </div>
+            {place &&
+               <div className="game-finished-page__text">
+                  You are 
+                  {place === 1 && " 1st"}
+                  {place === 2 && " 2nd"}
+                  {place === 3 && " 3rd"}
+                  {place >= 4 && ` ${place}th`} on the leaderboard!
+               </div>
+            }
             <div className="game-finished-page__buttons">
                <div className="button game-finished-page__button">
                   <Link to="/menu/leaderboard" className="button__link">Leaderboard</Link>
@@ -55,6 +64,7 @@ const mapStateToProps = state => ({
    difficulty: state.difficulty,
    time: state.time,
    hints: state.hints.counter,
+   place: state.place,
    notStarted: !state.boardCells && !state.finished,
 });
 

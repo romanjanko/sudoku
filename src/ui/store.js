@@ -20,7 +20,8 @@ const initialState = {
       activatedByBoardCell: null
    },
    finished: false,
-   leaderboard: leaderboardService.getBestResults()
+   leaderboard: leaderboardService.getBestResults(),
+   place: null // displays position on leaderboard when a game is finished
 }
 
 const middleware = [
