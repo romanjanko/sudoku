@@ -21,6 +21,7 @@ export default function boardReducer(state = {}, action) {
          const { boardSize, boardCells, player, difficulty } = action;
          
          return {
+            ...state,
             boardSize,
             boardCells,
             selectedBoardCell: null,
