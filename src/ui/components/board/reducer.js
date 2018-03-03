@@ -64,13 +64,14 @@ export default function boardReducer(state = {}, action) {
          };
       }
       case GAME_FINISHED_EVENT: {
-         const { place } = action;
+         const { place, leaderboard } = action;
          return {
             ...state,
             boardSize: 0,
             boardCells: null,
             finished: true,
-            place
+            place,
+            leaderboard
          };
       }
       case GIVE_HINT_EVENT: {

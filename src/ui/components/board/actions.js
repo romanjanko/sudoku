@@ -27,9 +27,10 @@ export const startNewGame = (player, difficulty, boardSize, boardCells) => ({
    boardCells
 });
 
-export const gameFinished = place => ({
+export const gameFinished = (place, leaderboard) => ({
    type: GAME_FINISHED_EVENT,
-   place
+   place,
+   leaderboard
 });
 
 export const giveHint = (row, column) => ({

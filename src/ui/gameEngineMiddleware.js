@@ -48,7 +48,7 @@ const gameEngineMiddleware = (gameEngine, leaderboardService) => store => next =
             const { player, difficulty, time, hints } = store.getState();
             const res = leaderboardService.tryAddResult(
                new GameResult(player, difficulty, time, hints.counter));
-            store.dispatch(gameFinished(res.place));
+            store.dispatch(gameFinished(res.place, res.leaderboard));
          }
          break;
       }
