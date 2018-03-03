@@ -1,0 +1,10 @@
+.leaderboard-table {
+   width: 100%;
+   border-collapse: collapse;
+
+   &__header {
+      border-top: 3px solid;
+      border-bottom: 3px solid;
+      font-weight: 700;
+   }
+}

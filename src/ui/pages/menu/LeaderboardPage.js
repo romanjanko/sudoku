@@ -83,6 +83,19 @@ class LeaderboardPage extends PureComponent {
       );
    }
 
+   getPlace(place) {
+      switch(place) {
+         case 1:
+            return "1st";
+         case 2:
+            return "2nd";
+         case 3:
+            return "3rd";
+         default:
+            return `${place}th`;
+      }
+   }
+
    renderLeaderboard() {
       const { leaderboard } = this.props;
       const { difficulty } = this.state;
@@ -92,9 +105,9 @@ class LeaderboardPage extends PureComponent {
          return <div className="margin-top-small center">No results</div>;
 
       return (
-         <div className="margin-top-small center">
-            <table>
-               <thead>
+         <div className="margin-top-small">
+            <table className="leaderboard-table">
+               <thead className="leaderboard-table__header">
                   <tr>
                      <td>Place</td>
                      <td>Player</td>
@@ -106,7 +119,7 @@ class LeaderboardPage extends PureComponent {
                   {results.map((gameResultsPerPlace, place) => {
                      return gameResultsPerPlace.map((gameResult, index) => (
                         <tr>
-                           <td>{index === 0 && place+1}</td>
+                           <td>{index === 0 && this.getPlace(place+1)}</td>
                            <td>{gameResult.player}</td>
                            <td>{index === 0 && numeral(gameResult.timeInSeconds).format("00:00:00")}</td>
                            <td>{index === 0 && gameResult.hints}</td>
